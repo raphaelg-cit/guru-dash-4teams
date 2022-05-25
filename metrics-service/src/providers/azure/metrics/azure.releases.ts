@@ -17,7 +17,7 @@ export async function getReleases(metadata: IAzureMetadata) {
     continuationToken > 0 && logger.debug(`Getting next page continuationToken: ${continuationToken}`);
     
     const res = await axios.get<IAzureResponse<IAzureRelease>>(
-      `https://vsrm.dev.azure.com/${metadata.organization}/${metadata.project}/_apis/release/deployments?api-version=6.1-preview.2&continuationToken=${continuationToken}&minStartedTime=${minStartedTime}`,
+      `http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/release/deployments?continuationToken=${continuationToken}&minStartedTime=${minStartedTime}`,
       { auth: { username: 'username', password: metadata.key } }
     );
 

@@ -7,7 +7,7 @@ export async function getBuilds(metadata: IAzureMetadata) {
   logger.info(`Getting Build Information from Azure Devops for ${metadata.organization} - ${metadata.project}`);
 
   const res = await axios.get<IAzureResponse<IAzureBuild>>(
-    `https://dev.azure.com/${metadata.organization}/${metadata.project}/_apis/build/builds?api-version=6.0`,
+    `http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/build/builds`,
     { auth: { username: 'username', password: metadata.key } }
   );
 

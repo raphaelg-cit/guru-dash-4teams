@@ -44,6 +44,6 @@ export interface IAzureWorkItem {
   fields: {
     'System.State': string;
     'System.CreatedDate': string;
-    'Microsoft.VSTS.Common.ClosedDate': string;
+    'System.ChangedDate': string;
   }
 }
