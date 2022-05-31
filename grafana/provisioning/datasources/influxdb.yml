@@ -6,3 +6,6 @@ datasources:
     access: server
     database: devops
     url: http://influxdb:8086
+  - name: prometheus
+    type: prometheus
+    url: http://host.docker.internal:9090

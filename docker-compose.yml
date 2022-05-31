@@ -57,6 +57,7 @@ services:
     - --azuredevops.access-token=ailma2gkecoeupmg6ohkqbfreh47oquujrf7sbsenusy655yda4a
     - --azuredevops.organisation=TeamDDSProjectCollection
     - --azuredevops.apiversion=4.0
-    image: azuredevopsexporter
+  #  image: azuredevopsexporter
+    image: webdevops/azure-devops-exporter
     ports:
     - 8080:8080

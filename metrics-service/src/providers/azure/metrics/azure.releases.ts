@@ -8,7 +8,7 @@ export async function getReleases(metadata: IAzureMetadata) {
 
   const minDate = new Date();
   minDate.setMonth(minDate.getMonth() - 3);
-  const minStartedTime = minDate.toISOString();
+  //const minStartedTime = minDate.toISOString();
 
   const metrics: IPoint[] = [];
   let continuationToken = 0;
@@ -17,7 +17,8 @@ export async function getReleases(metadata: IAzureMetadata) {
     continuationToken > 0 && logger.debug(`Getting next page continuationToken: ${continuationToken}`);
     
     const res = await axios.get<IAzureResponse<IAzureRelease>>(
-      `http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/release/deployments?continuationToken=${continuationToken}&minStartedTime=${minStartedTime}`,
+      //`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/release/deployments?continuationToken=${continuationToken}&minStartedTime=${minStartedTime}`,
+      `http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/release/deployments?continuationToken=${continuationToken}`,
       { auth: { username: 'username', password: metadata.key } }
     );
 
