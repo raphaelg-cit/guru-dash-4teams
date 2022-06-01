@@ -23,6 +23,7 @@ export async function getReleases(metadata: IAzureMetadata) {
     );
 
     metrics.push(...res.data.value.filter(release => predicate(metadata, release)).map(map));
+    //metrics.push(...res.data.value.map(map));
     continuationToken = Number(res.headers['x-ms-continuationtoken']);
   }
 
@@ -43,6 +44,7 @@ function map(release: IAzureRelease): IPoint {
     fields: { 
       duration: new Date(release.completedOn).getTime() - new Date(release.startedOn).getTime(),
       success: release.deploymentStatus === 'succeeded' ? 1 : 0,
+      releaseEnvironmentName: release.releaseEnvironment.name
     },
     timestamp: new Date(release.startedOn),
   }

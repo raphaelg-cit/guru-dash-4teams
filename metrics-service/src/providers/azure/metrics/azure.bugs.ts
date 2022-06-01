@@ -16,7 +16,7 @@ async function queryBugs(metadata: IAzureMetadata) {
 
   const res = await axios.post<IAzureWIQLResponse>(
     //`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0`, // &$top=2000
-    `http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0&$top=400`, 
+    `http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0&$top=2000`, 
     { query: metadata.bugsQuery },
     { auth: { username: 'username', password: metadata.key } }
   );
@@ -41,12 +41,12 @@ for (var i = 0; i < arrayOfStrings.length; i++){
    if (i % 10 == 0 && i>0 )
    {
     postingStr = postingStr.slice(0, -1) // remove last ','
-    PromiseArr.push( await axios.get<IAzureResponse<IAzureWorkItem>>(`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/workitems?ids=${postingStr}&fields=System.State,System.CreatedDate,System.ChangedDate&api-version=4.1`, { auth: { username: 'username', password: metadata.key } }  ) );
+    PromiseArr.push( await axios.get<IAzureResponse<IAzureWorkItem>>(`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/workitems?ids=${postingStr}&fields=System.State,System.CreatedDate,System.ChangedDate,System.TeamProject,System.WorkItemType,System.Title,System.AreaPath,System.IterationPath&api-version=4.1`, { auth: { username: 'username', password: metadata.key } }  ) );
     postingStr=""; //reset
    }
 }
 postingStr = postingStr.slice(0, -1) // remove last ','
-PromiseArr.push ( await axios.get<IAzureResponse<IAzureWorkItem>>(`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/workitems?ids=${postingStr}&fields=System.State,System.CreatedDate,System.ChangedDate&api-version=4.1`, { auth: { username: 'username', password: metadata.key } }  ));
+PromiseArr.push ( await axios.get<IAzureResponse<IAzureWorkItem>>(`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/workitems?ids=${postingStr}&fields=System.State,System.CreatedDate,System.ChangedDate,System.TeamProject,System.Title,System.AreaPath,System.IterationPath&api-version=4.1`, { auth: { username: 'username', password: metadata.key } }  ));
 
 const promiseResult = Promise.all(PromiseArr).then(promiseResult => {
 logger.info(`Preparing promise calls to get bugs`);
@@ -67,7 +67,13 @@ return promiseResult;
 function filter(workItem: IAzureWorkItem): boolean {
   //for now, let's keep the 'filter' only in the WIQL query
   //return !! ((workItem.fields["System.State"] != 'Active') && (workItem.fields["System.State"] != 'New') );
-  return !! (true);
+  return !! ((workItem.fields["System.WorkItemType"] == 'Bug') 
+              ||(workItem.fields["System.WorkItemType"] == 'Epic') 
+              ||(workItem.fields["System.WorkItemType"] == 'Feature') 
+              ||(workItem.fields["System.WorkItemType"] == 'User Story') 
+              ||(workItem.fields["System.WorkItemType"] == 'Task') 
+            );
+  //return !! (true);
 }
 
 function map(workItem: IAzureWorkItem): IPoint {
@@ -75,11 +81,16 @@ function map(workItem: IAzureWorkItem): IPoint {
     timestamp: new Date(workItem.fields["System.ChangedDate"]),
     measurement: 'bug',
     tags: {
-      provider: 'azure'
+      provider: 'azure',
+      project: workItem.fields["System.TeamProject"],
+      iterationpath: workItem.fields["System.IterationPath"]
     },
     fields: {
       duration: new Date(workItem.fields["System.ChangedDate"]).getTime() - new Date(workItem.fields["System.CreatedDate"]).getTime(),
-      state: workItem.fields["System.State"]
+      state: workItem.fields["System.State"],
+      type: workItem.fields["System.WorkItemType"],
+      title: workItem.fields["System.Title"],
+      areapath : workItem.fields["System.AreaPath"],
     }
   }
 }

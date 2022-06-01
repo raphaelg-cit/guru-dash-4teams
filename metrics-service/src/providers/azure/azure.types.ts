@@ -45,5 +45,10 @@ export interface IAzureWorkItem {
     'System.State': string;
     'System.CreatedDate': string;
     'System.ChangedDate': string;
+    'System.TeamProject': string;
+    'System.WorkItemType': string;
+    'System.Title': string;
+    'System.AreaPath': string;
+    'System.IterationPath': string;
   }
 }

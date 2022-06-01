@@ -15,9 +15,145 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1654008785375,
+  "iteration": 1654104464852,
   "links": [],
   "panels": [
+    {
+      "datasource": "influxdb",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.16",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT sum(\"success\") as deploys FROM \"deploy\" WHERE (\"project\" =~ /^$ProjectDeployName$/) GROUP BY time(1w, 3d) , project",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Deployment Frequency (per week) - successful deployments - By ProjectDeployName",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "deploy.deploys": "Deployment count"
+            }
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "deploy.deploys {project",
+            "renamePattern": " "
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "}",
+            "renamePattern": " "
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
     {
       "aliasColors": {},
       "bars": false,
@@ -34,7 +170,7 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 0,
+        "x": 12,
         "y": 0
       },
       "hiddenSeries": false,
@@ -52,7 +188,7 @@
         "values": true
       },
       "lines": true,
-      "linewidth": 2,
+      "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
       "options": {
@@ -111,7 +247,7 @@
           "format": "percentunit",
           "label": "success rate",
           "logBase": 1,
-          "max": null,
+          "max": "1",
           "min": null,
           "show": true
         },
@@ -131,6 +267,151 @@
       }
     },
     {
+      "datasource": "influxdb",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 40
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 6,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.16",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "deploy",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT 100 - (mean(\"success\") * 100) FROM \"deploy\" WHERE  (\"project\" =~ /^$ProjectDeployName$/) AND $timeFilter Group By time(1w, 3d), project",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "success"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "project",
+              "operator": "=~",
+              "value": "/^$ProjectBuildName$/"
+            }
+          ]
+        }
+      ],
+      "title": "Deployment Failure Rate - By ProjectDeployName",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "deploy.mean": "Failure rate"
+            }
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "deploy.mean {project",
+            "renamePattern": " "
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "}",
+            "renamePattern": " "
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "cacheTimeout": null,
@@ -145,9 +426,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 8,
-        "w": 11,
+        "w": 12,
         "x": 12,
-        "y": 0
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 24,
@@ -244,128 +525,6 @@
     },
     {
       "datasource": "influxdb",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "graph": false,
-              "legend": false,
-              "tooltip": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 8
-      },
-      "id": 2,
-      "options": {
-        "graph": {},
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltipOptions": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "7.5.16",
-      "targets": [
-        {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(\"success\") as deploys FROM \"deploy\" WHERE (\"project\" =~ /^$ProjectDeployName$/) GROUP BY time(1w, 3d)",
-          "queryType": "randomWalk",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Deployment Frequency (per week)",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {},
-            "renameByName": {
-              "deploy.deploys": "Deployment count"
-            }
-          }
-        }
-      ],
-      "type": "timeseries"
-    },
-    {
-      "datasource": "influxdb",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -391,10 +550,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 11,
-        "x": 12,
-        "y": 8
+        "h": 10,
+        "w": 9,
+        "x": 0,
+        "y": 16
       },
       "id": 8,
       "options": {
@@ -454,142 +613,12 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Time to Restore Service (Deploy)",
+      "title": "Time to Restore Service (Deploy) - Elapsed time between failure and success for a given ProjectDeployName",
       "type": "gauge"
     },
     {
       "datasource": "influxdb",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "graph": false,
-              "legend": false,
-              "tooltip": false
-            },
-            "lineInterpolation": "linear",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 40
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 16
-      },
-      "id": 6,
-      "options": {
-        "graph": {},
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltipOptions": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "7.5.16",
-      "targets": [
-        {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "deploy",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT 100 - (mean(\"success\") * 100) FROM \"deploy\" WHERE  (\"project\" =~ /^$ProjectDeployName$/) AND $timeFilter Group By time(1w, 3d)",
-          "queryType": "randomWalk",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "success"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "project",
-              "operator": "=~",
-              "value": "/^$ProjectBuildName$/"
-            }
-          ]
-        }
-      ],
-      "title": "Deployment Failure Rate",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {},
-            "renameByName": {
-              "Time": "",
-              "deploy.mean": "Failure rate"
-            }
-          }
-        }
-      ],
-      "type": "timeseries"
-    },
-    {
-      "datasource": "influxdb",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -616,9 +645,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 11,
-        "x": 12,
+        "h": 10,
+        "w": 5,
+        "x": 9,
         "y": 16
       },
       "id": 20,
@@ -655,7 +684,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"duration\") FROM \"bug\"  where state='Closed';",
+          "query": "SELECT  mean(\"duration\") FROM \"bug\" where (\"type\" =~ /^$WorkItemType$/)   and  (\"iterationpath\" =~ /^$workItemIterationPath$/)   group by iterationpath;",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -676,11 +705,139 @@
           "tags": []
         }
       ],
-      "title": "Lead Time for Changes (Bugs)",
-      "transformations": [],
+      "title": "Lead Time for Changes (By WorkItemType / By IterationPath)",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "bug.mean {iterationpath:",
+            "renamePattern": " "
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "}",
+            "renamePattern": " "
+          }
+        }
+      ],
       "type": "gauge"
+    },
+    {
+      "datasource": "influxdb",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "max": 3600000,
+          "min": 1,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 10,
+        "x": 14,
+        "y": 16
+      },
+      "id": 28,
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "list",
+          "placement": "right",
+          "values": []
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {}
+      },
+      "pluginVersion": "7.5.16",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT  mean(\"duration\") FROM \"bug\"   where (\"type\" =~ /^$WorkItemType$/)  group by iterationpath;",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "Lead Time for Changes by WorkItemType (All Iteration Paths)",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "bug.mean {iterationpath:",
+            "renamePattern": " "
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "}",
+            "renamePattern": " "
+          }
+        }
+      ],
+      "type": "piechart"
     }
   ],
+  "refresh": false,
   "schemaVersion": 27,
   "style": "dark",
   "tags": [],
@@ -692,10 +849,10 @@
           "selected": true,
           "tags": [],
           "text": [
-            "saldo-core-cd"
+            "All"
           ],
           "value": [
-            "saldo-core-cd"
+            "$__all"
           ]
         },
         "datasource": "influxdb",
@@ -709,7 +866,7 @@
         "name": "ProjectDeployName",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "All",
             "value": "$__all"
           },
@@ -794,7 +951,7 @@
             "value": "framework-bill-model-cd"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "saldo-core-cd",
             "value": "saldo-core-cd"
           }
@@ -809,16 +966,379 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "Bug",
+          "value": "Bug"
+        },
+        "datasource": "influxdb",
+        "definition": "select distinct \"type\" from bug;",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "WorkItemType",
+        "options": [
+          {
+            "selected": true,
+            "text": "Bug",
+            "value": "Bug"
+          }
+        ],
+        "query": "select distinct \"type\" from bug;",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "Agora.IPO",
+          "value": "Agora.IPO"
+        },
+        "datasource": "influxdb",
+        "definition": "select distinct \"iterationpath\" from bug;",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "workItemIterationPath",
+        "options": [
+          {
+            "selected": false,
+            "text": "Agora.Brokerage",
+            "value": "Agora.Brokerage"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil",
+            "value": "Agora.Brokerage.Dil"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\Agora.NovoModelo2020\\Produtos Financeiros\\Sprint 1",
+            "value": "Agora.Brokerage.Dil\\Agora.NovoModelo2020\\Produtos Financeiros\\Sprint 1"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\Agora.NovoModelo2020\\Produtos Financeiros\\Sprint 15",
+            "value": "Agora.Brokerage.Dil\\Agora.NovoModelo2020\\Produtos Financeiros\\Sprint 15"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\Agora.NovoModelo2020\\Produtos Financeiros\\Sprint 9",
+            "value": "Agora.Brokerage.Dil\\Agora.NovoModelo2020\\Produtos Financeiros\\Sprint 9"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\BR 2\\Sprint 5",
+            "value": "Agora.Brokerage.Dil\\BR 2\\Sprint 5"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\BR 4\\Sprint 2",
+            "value": "Agora.Brokerage.Dil\\BR 4\\Sprint 2"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\BR 4\\Sprint 5",
+            "value": "Agora.Brokerage.Dil\\BR 4\\Sprint 5"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\BR 4\\Sprint 8-half",
+            "value": "Agora.Brokerage.Dil\\BR 4\\Sprint 8-half"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\CRM\\SPRINT 01",
+            "value": "Agora.Brokerage.Dil\\CRM\\SPRINT 01"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\CRM\\Sprint 05 - 06",
+            "value": "Agora.Brokerage.Dil\\CRM\\Sprint 05 - 06"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\Change Requests\\Abril",
+            "value": "Agora.Brokerage.Dil\\Change Requests\\Abril"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\Change Requests\\Dezembro",
+            "value": "Agora.Brokerage.Dil\\Change Requests\\Dezembro"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\Change Requests\\Janeiro",
+            "value": "Agora.Brokerage.Dil\\Change Requests\\Janeiro"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\DevOps",
+            "value": "Agora.Brokerage.Dil\\DevOps"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\Evoluções\\Unificação Corretoras\\APIC\\Sprint 11",
+            "value": "Agora.Brokerage.Dil\\Evoluções\\Unificação Corretoras\\APIC\\Sprint 11"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\Evoluções\\Unificação Corretoras\\APIC\\Sprint 9",
+            "value": "Agora.Brokerage.Dil\\Evoluções\\Unificação Corretoras\\APIC\\Sprint 9"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\IBM Team\\Sprint 14",
+            "value": "Agora.Brokerage.Dil\\IBM Team\\Sprint 14"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\IBM Team\\Sprint 15",
+            "value": "Agora.Brokerage.Dil\\IBM Team\\Sprint 15"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\IBM Team\\Sprint 16",
+            "value": "Agora.Brokerage.Dil\\IBM Team\\Sprint 16"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\IBM Team\\Sprint 17",
+            "value": "Agora.Brokerage.Dil\\IBM Team\\Sprint 17"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\IBM Team\\Sprint 18",
+            "value": "Agora.Brokerage.Dil\\IBM Team\\Sprint 18"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\IBM Team\\Sprint 19",
+            "value": "Agora.Brokerage.Dil\\IBM Team\\Sprint 19"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\IBM Team\\Sprint 23",
+            "value": "Agora.Brokerage.Dil\\IBM Team\\Sprint 23"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\LGPD",
+            "value": "Agora.Brokerage.Dil\\LGPD"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\Treasure\\Sprint 3",
+            "value": "Agora.Brokerage.Dil\\Treasure\\Sprint 3"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage.Dil\\US\\Sprint 3",
+            "value": "Agora.Brokerage.Dil\\US\\Sprint 3"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos",
+            "value": "Agora.Brokerage\\Fundos"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Desenvolvimento\\Sprint3",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Desenvolvimento\\Sprint3"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Desenvolvimento\\Sprint5",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Desenvolvimento\\Sprint5"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Desenvolvimento\\Sprint6",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Desenvolvimento\\Sprint6"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Desenvolvimento\\Sprint7",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Desenvolvimento\\Sprint7"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint1",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint1"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint2",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint2"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint3",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint3"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint4",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint4"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint5",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint5"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint6",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint6"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint7",
+            "value": "Agora.Brokerage\\Fundos\\Nova Experiência de Fundos\\Sprint7"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Ofertas Públicas",
+            "value": "Agora.Brokerage\\Ofertas Públicas"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas",
+            "value": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\SIT2",
+            "value": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\SIT2"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint1",
+            "value": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint1"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint2",
+            "value": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint2"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint3",
+            "value": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint3"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint4",
+            "value": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint4"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint5",
+            "value": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint5"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint6",
+            "value": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\Sprint6"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\UAT",
+            "value": "Agora.Brokerage\\Ofertas Públicas\\Nova Experiência de Ofertas Públicas\\UAT"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Ofertas Públicas\\TESTE Nova Experiência de Ofertas Públicas",
+            "value": "Agora.Brokerage\\Ofertas Públicas\\TESTE Nova Experiência de Ofertas Públicas"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Renda Fixa",
+            "value": "Agora.Brokerage\\Renda Fixa"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Brokerage\\Renda Fixa\\Nova Experiência de Renda Fixa",
+            "value": "Agora.Brokerage\\Renda Fixa\\Nova Experiência de Renda Fixa"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Cadastro",
+            "value": "Agora.Cadastro"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Extranet",
+            "value": "Agora.Extranet"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Fundos",
+            "value": "Agora.Fundos"
+          },
+          {
+            "selected": true,
+            "text": "Agora.IPO",
+            "value": "Agora.IPO"
+          },
+          {
+            "selected": false,
+            "text": "Agora.RendaFixa\\Sprint 6",
+            "value": "Agora.RendaFixa\\Sprint 6"
+          },
+          {
+            "selected": false,
+            "text": "Agora.Risco",
+            "value": "Agora.Risco"
+          },
+          {
+            "selected": false,
+            "text": "Agora.SnapShot",
+            "value": "Agora.SnapShot"
+          }
+        ],
+        "query": "select distinct \"iterationpath\" from bug;",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
   "time": {
-    "from": "now-90d",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Key Metrics",
   "uid": "VD_qTt97k",
-  "version": 20
+  "version": 4
 }
