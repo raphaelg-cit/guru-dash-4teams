@@ -16,7 +16,8 @@ async function queryBugs(metadata: IAzureMetadata) {
 
   const res = await axios.post<IAzureWIQLResponse>(
     //`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0`, // &$top=2000
-    `http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0&$top=2000`, 
+    //`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0&$top=2000`, 
+    `http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0&$top=10000`, 
     { query: metadata.bugsQuery },
     { auth: { username: 'username', password: metadata.key } }
   );
@@ -32,7 +33,8 @@ async function getDetails(metadata: IAzureMetadata, ids: string) {
 
 logger.info(`Getting bug details...`);
 
-const PromiseArr: any[] = [];
+//const PromiseArr: any[] = [];
+const metrics: any[] = [];
 
 var arrayOfStrings = ids.toString().split(",");
 var postingStr="";
@@ -41,26 +43,36 @@ for (var i = 0; i < arrayOfStrings.length; i++){
    if (i % 10 == 0 && i>0 )
    {
     postingStr = postingStr.slice(0, -1) // remove last ','
-    PromiseArr.push( await axios.get<IAzureResponse<IAzureWorkItem>>(`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/workitems?ids=${postingStr}&fields=System.State,System.CreatedDate,System.ChangedDate,System.TeamProject,System.WorkItemType,System.Title,System.AreaPath,System.IterationPath&api-version=4.1`, { auth: { username: 'username', password: metadata.key } }  ) );
+    //PromiseArr.push( await axios.get<IAzureResponse<IAzureWorkItem>>(`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/workitems?ids=${postingStr}&fields=System.State,System.CreatedDate,System.ChangedDate,System.TeamProject,System.WorkItemType,System.Title,System.AreaPath,System.IterationPath&api-version=4.1`, { auth: { username: 'username', password: metadata.key } }  ) );
+    logger.info(`Getting work item info for ids: ${postingStr} `);
+    const res = await axios.get<IAzureResponse<IAzureWorkItem>>(`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/workitems?ids=${postingStr}&fields=System.State,System.CreatedDate,System.ChangedDate,System.TeamProject,System.WorkItemType,System.Title,System.AreaPath,System.IterationPath&api-version=4.1`, { auth: { username: 'username', password: metadata.key } }  )
+    metrics.push(...res.data.value);
     postingStr=""; //reset
    }
 }
 postingStr = postingStr.slice(0, -1) // remove last ','
-PromiseArr.push ( await axios.get<IAzureResponse<IAzureWorkItem>>(`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/workitems?ids=${postingStr}&fields=System.State,System.CreatedDate,System.ChangedDate,System.TeamProject,System.Title,System.AreaPath,System.IterationPath&api-version=4.1`, { auth: { username: 'username', password: metadata.key } }  ));
+//PromiseArr.push ( await axios.get<IAzureResponse<IAzureWorkItem>>(`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/workitems?ids=${postingStr}&fields=System.State,System.CreatedDate,System.ChangedDate,System.TeamProject,System.Title,System.AreaPath,System.IterationPath&api-version=4.1`, { auth: { username: 'username', password: metadata.key } }  ));
+logger.info(`Getting last work item info for ids: ${postingStr} `);
+const res = await axios.get<IAzureResponse<IAzureWorkItem>>(`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/workitems?ids=${postingStr}&fields=System.State,System.CreatedDate,System.ChangedDate,System.TeamProject,System.WorkItemType,System.Title,System.AreaPath,System.IterationPath&api-version=4.1`, { auth: { username: 'username', password: metadata.key } }  )
+metrics.push(...res.data.value);
 
-const promiseResult = Promise.all(PromiseArr).then(promiseResult => {
-logger.info(`Preparing promise calls to get bugs`);
-var resArray = [];
-for(var promiseResultElement of promiseResult){
-    if (!promiseResultElement.data.value) {
-      throw new Error(`Error querying for bugs on Azure Devops, status code: ${promiseResultElement.status}`);
-    }
-    resArray.push(...promiseResultElement.data.value);
-}
-return resArray;
-});
+
+//const promiseResult = Promise.all(PromiseArr).then(promiseResult => {
+//logger.info(`Preparing promise calls to get bugs`);
+//var resArray = [];
+//for(var promiseResultElement of promiseResult){
+//    if (!promiseResultElement.data.value) {
+//      throw new Error(`Error querying for bugs on Azure Devops, status code: ${promiseResultElement.status}`);
+//    }
+//    resArray.push(...promiseResultElement.data.value);
+//}
+//return resArray;
+//});
+//logger.info(`Returning bugs`);
+//return promiseResult;
+
 logger.info(`Returning bugs`);
-return promiseResult;
+return metrics;
 
 }
 
