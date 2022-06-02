@@ -1,0 +1,27 @@
+{
+  "key": "b35db0a6323e9d8a8596ba378d97bc3f4a774750",
+  "url": "http://sonarqube.apps.ti.ocp.agorasenior.corp",
+  "projects": [
+    "business-assinaturaeletronica-api"
+  ],
+  "metrics": [
+    "tests",
+    "coverage",
+    "sqale_index",
+    "lines",
+    "complexity",
+    "cognitive_complexity",
+    "duplicated_lines_density",
+    "duplicated_blocks",
+    "code_smells",
+    "new_code_smells",
+    "vulnerabilities",
+    "bugs",
+    "sqale_debt_ratio",
+    "reliability_rating",
+    "security_rating",
+    "sqale_rating",
+    "blocker_violations",
+    "critical_violations"
+  ]
+}
