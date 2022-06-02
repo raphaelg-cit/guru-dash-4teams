@@ -682,7 +682,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT count(\"duration\") FROM \"bug\" WHERE $timeFilter GROUP BY time(1w, 3d) fill(null)",
+          "query": "SELECT count(\"duration\") FROM \"workitem\" WHERE $timeFilter GROUP BY time(1w, 3d) fill(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -707,7 +707,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "New Bugs in Production",
+      "title": "New workitems in Production",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -801,10 +801,10 @@
       "targets": [
         {
           "groupBy": [],
-          "measurement": "bug",
+          "measurement": "workitem",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"duration\") FROM \"bug\" WHERE $timeFilter",
+          "query": "SELECT mean(\"duration\") FROM \"workitem\" WHERE $timeFilter",
           "queryType": "randomWalk",
           "rawQuery": true,
           "refId": "A",

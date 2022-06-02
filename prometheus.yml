@@ -21,6 +21,7 @@ scrape_configs:
   - job_name: 'azure-devops-exporter-job'
     static_configs:
       - targets: ['host.docker.internal:8080'] # Only works on Docker Desktop for Windows
+      #- targets: ['20.231.56.31:8080'] 
         labels:
           grupo: 'azure-devops-exporter-group'
           

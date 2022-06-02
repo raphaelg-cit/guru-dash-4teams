@@ -9,7 +9,8 @@
   "releases": [
     "Name of the stages in the pipeline that should be considered as deploys"
   ],
-  "bugsQuery": "WIQL to query bugs in Azure Devops"
+  "workitemsQuery": "WIQL to query workitems in Azure Devops",
+  "workItemsLastMonths": "Number of last months to be considered in the query of workitems"
 }
 ```
 #### Provider name: azure
@@ -17,4 +18,4 @@
 The supported metrics are:
 - build
 - release
-- bug
+- workitem

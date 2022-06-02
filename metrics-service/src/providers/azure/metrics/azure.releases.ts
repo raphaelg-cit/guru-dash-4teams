@@ -7,12 +7,10 @@ export async function getReleases(metadata: IAzureMetadata) {
   logger.info(`Getting Release Information from Azure Devops for ${metadata.organization} - ${metadata.project}`);
 
   const minDate = new Date();
-  //minDate.setMonth(minDate.getMonth() - 3);
-  minDate.setMonth(minDate.getMonth() - 1);
+  logger.info(`Getting Data from the last ${metadata.workItemsLastMonths} months`);
+  minDate.setMonth(minDate.getMonth() - Number(metadata.workItemsLastMonths));
   const minStartedTime = minDate.toISOString();
   
-  //to check how to let this time configurable via strapi
-  logger.info(`Getting Data from the last 1 months`);
 
   const metrics: IPoint[] = [];
   let continuationToken = 0;

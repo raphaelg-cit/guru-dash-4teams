@@ -2,8 +2,9 @@ export interface IAzureMetadata {
   organization: string;
   project: string;
   key: string;
-  releases: string[]
-  bugsQuery: string;
+  releases: string[];
+  workitemsQuery: string;
+  workItemsLastMonths: string;
 }
 
 export interface IAzureResponse<T> {

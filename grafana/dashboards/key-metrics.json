@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1654113617713,
+  "iteration": 1654206496079,
   "links": [],
   "panels": [
     {
@@ -26,7 +26,7 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisLabel": "",
+            "axisLabel": "Number of Deployments",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -101,7 +101,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT sum(\"success\") as deploys FROM \"deploy\" WHERE (\"project\" =~ /^$ProjectDeployName$/)  and (\"releaseEnvironmentName\" =~ /^$environment$/) GROUP BY time(1w, 3d) , project",
+          "query": "SELECT sum(\"success\") as deploys FROM \"deploy\" WHERE (\"project\" =~ /^$ProjectDeployName$/)  and (\"releaseEnvironmentName\" =~ /^$environment$/) AND $timeFilter  GROUP BY time(1d) , project",
           "queryType": "randomWalk",
           "rawQuery": true,
           "refId": "A",
@@ -125,7 +125,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Deployment Frequency (per week) - successful deployments - By ProjectDeployName / By Environment",
+      "title": "Daily Deployment Frequency  - successful deployments - By ProjectDeployName / By Environment",
       "transformations": [
         {
           "id": "organize",
@@ -274,7 +274,7 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisLabel": "",
+            "axisLabel": "Percentage (Failures)",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -353,7 +353,7 @@
           "measurement": "deploy",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT 100 - (mean(\"success\") * 100) FROM \"deploy\" WHERE  (\"project\" =~ /^$ProjectDeployName$/) and (\"releaseEnvironmentName\" =~ /^$environment$/)  AND $timeFilter Group By time(1w, 3d), project",
+          "query": "SELECT 100 - (mean(\"success\") * 100) FROM \"deploy\" WHERE  (\"project\" =~ /^$ProjectDeployName$/) and (\"releaseEnvironmentName\" =~ /^$environment$/)  AND $timeFilter Group By time(1d), project",
           "queryType": "randomWalk",
           "rawQuery": true,
           "refId": "A",
@@ -381,7 +381,7 @@
           ]
         }
       ],
-      "title": "Deployment Failure Rate - By ProjectDeployName",
+      "title": "Daily Deployment Failure Rate - By ProjectDeployName / By Environment",
       "transformations": [
         {
           "id": "organize",
@@ -593,7 +593,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "select elap/3600/1000000000 from (select difference(\"success\") as diff, elapsed(\"success\") as elap FROM \"deploy\" where (\"project\" =~ /^$ProjectDeployName$/ and \"releaseEnvironmentName\" =~ /^$environment$/)) where diff > 0 group by project;",
+          "query": "select  mean(elap) from (select difference(\"success\") as diff, elapsed(\"success\",1h) as elap FROM \"deploy\"  where (\"releaseEnvironmentName\" =~ /^$environment$/) ) where diff > 0   group by project;",
           "queryType": "randomWalk",
           "rawQuery": true,
           "refId": "A",
@@ -617,12 +617,12 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Time to Restore Service (Deploy) - Elapsed time between failure and success - By ProjectDeployName",
+      "title": "Time to Restore Service (Deploy) - Mean elapsed time between failure and success - By ProjectDeployName",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "deploy.elap {project: ",
+            "regex": "deploy.mean {project: ",
             "renamePattern": " "
           }
         },
@@ -658,13 +658,13 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "ms"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
-        "w": 11,
+        "w": 12,
         "x": 12,
         "y": 17
       },
@@ -706,7 +706,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT  mean(\"duration\") FROM \"bug\"   where (\"type\" =~ /^$WorkItemType$/)  group by iterationpath;",
+          "query": "SELECT  mean(\"duration\") FROM \"workitem\"   where (\"type\" =~ /^$WorkItemType$/)  AND (\"state\" =~ /^$workItemState$/)  group by iterationpath;",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -729,12 +729,12 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Lead Time for Changes by WorkItemType (All Iteration Paths)",
+      "title": "Lead Time for Changes by WorkItemType / by workItemState (All Iteration Paths)",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "bug.mean {iterationpath:",
+            "regex": "workitem.mean {iterationpath:",
             "renamePattern": " "
           }
         },
@@ -2932,7 +2932,7 @@
           "value": "Task"
         },
         "datasource": "influxdb",
-        "definition": "select distinct \"type\" from bug;",
+        "definition": "select distinct \"type\" from workitem;",
         "description": null,
         "error": null,
         "hide": 0,
@@ -2962,7 +2962,7 @@
             "value": "Feature"
           }
         ],
-        "query": "select distinct \"type\" from bug;",
+        "query": "select distinct \"type\" from workitem;",
         "refresh": 0,
         "regex": "",
         "skipUrlSync": false,
@@ -3051,6 +3051,75 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "New"
+          ],
+          "value": [
+            "New"
+          ]
+        },
+        "datasource": "influxdb",
+        "definition": "select distinct \"state\" from workitem;",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "workItemState",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "Closed",
+            "value": "Closed"
+          },
+          {
+            "selected": false,
+            "text": "Active",
+            "value": "Active"
+          },
+          {
+            "selected": true,
+            "text": "New",
+            "value": "New"
+          },
+          {
+            "selected": false,
+            "text": "Removed",
+            "value": "Removed"
+          },
+          {
+            "selected": false,
+            "text": "Resolved",
+            "value": "Resolved"
+          },
+          {
+            "selected": false,
+            "text": "Proposed",
+            "value": "Proposed"
+          }
+        ],
+        "query": "select distinct \"state\" from workitem;",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -3062,5 +3131,5 @@
   "timezone": "",
   "title": "Key Metrics",
   "uid": "VD_qTt97k",
-  "version": 2
+  "version": 7
 }
