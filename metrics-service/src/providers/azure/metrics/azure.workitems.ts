@@ -39,7 +39,7 @@ var arrayOfStrings = ids.toString().split(",");
 var postingStr="";
 for (var i = 0; i < arrayOfStrings.length; i++){
   postingStr = postingStr + arrayOfStrings[i] + ",";
-   if (i % 10 == 0 && i>0 )
+   if (i % 200 == 0 && i>0 )
    {
     postingStr = postingStr.slice(0, -1) // remove last ','
     logger.info(`Getting work item info for ids: ${postingStr} `);
