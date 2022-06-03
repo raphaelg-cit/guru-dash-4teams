@@ -15,9 +15,9 @@ async function queryWorkitems(metadata: IAzureMetadata) {
   logger.info(`Querying for workitems on Azure Devops for ${metadata.organization} - ${metadata.project}`);
 
   const res = await axios.post<IAzureWIQLResponse>(
-    //`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0`, // &$top=2000
+    `http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0`, // &$top=2000
     //`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0&$top=2000`, 
-    `http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0&$top=10000`, 
+    //`http://tfs-agora.corpt.bradesco.com.br/tfs/${metadata.organization}/${metadata.project}/_apis/wit/wiql?api-version=4.0&$top=10000`, 
     { query: metadata.workitemsQuery },
     { auth: { username: 'username', password: metadata.key } }
   );

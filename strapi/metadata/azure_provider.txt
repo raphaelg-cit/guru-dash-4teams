@@ -9,6 +9,6 @@
     "FIX",
     "PRD"
   ],
-  "workitemsQuery": "Select [System.Id], [System.Title], [System.State], [System.TeamProject], [System.WorkItemType] From WorkItems Where [System.WorkItemType] IN ('Epic', 'Feature', 'User Story')",
+  "workitemsQuery": "Select [System.Id], [System.Title], [System.State], [System.TeamProject], [System.WorkItemType] From WorkItems Where [System.WorkItemType] IN ('Epic', 'Feature', 'User Story', 'Task' , 'Bug')",
   "workItemsLastMonths": "1"
 }
