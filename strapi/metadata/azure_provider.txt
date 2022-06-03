@@ -2,7 +2,13 @@
   "key": "ailma2gkecoeupmg6ohkqbfreh47oquujrf7sbsenusy655yda4a",
   "organization": "TeamDDSProjectCollection",
   "project": "Agora.DevOps",
-  "releases": "NugetFeed",
-  "workitemsQuery": "Select [System.Id], [System.Title], [System.State], [System.TeamProject], [System.WorkItemType] From WorkItems Where [System.WorkItemType] IN ('Epic', 'Feature', 'User Story', 'Task')",
-  "workItemsLastMonths": "2"
+  "releases": [
+    "TU",
+    "TI",
+    "TH",
+    "FIX",
+    "PRD"
+  ],
+  "workitemsQuery": "Select [System.Id], [System.Title], [System.State], [System.TeamProject], [System.WorkItemType] From WorkItems Where [System.WorkItemType] IN ('Epic', 'Feature', 'User Story', 'Task' , 'Bug')",
+  "workItemsLastMonths": "1"
 }
