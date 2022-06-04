@@ -60,13 +60,19 @@ return metrics;
 
 function filter(workItem: IAzureWorkItem): boolean {
   //return !! ((workItem.fields["System.State"] != 'Active') && (workItem.fields["System.State"] != 'New') );
-  return !! ((workItem.fields["System.WorkItemType"] == 'Bug') 
-              ||(workItem.fields["System.WorkItemType"] == 'Epic') 
-              ||(workItem.fields["System.WorkItemType"] == 'Feature') 
-              ||(workItem.fields["System.WorkItemType"] == 'User Story') 
-              ||(workItem.fields["System.WorkItemType"] == 'Task') 
-            );
+  //return !! ((workItem.fields["System.WorkItemType"] == 'Bug') 
+  //            ||(workItem.fields["System.WorkItemType"] == 'Epic') 
+  //            ||(workItem.fields["System.WorkItemType"] == 'Feature') 
+  //            ||(workItem.fields["System.WorkItemType"] == 'User Story') 
+  //            ||(workItem.fields["System.WorkItemType"] == 'Task') 
+  //          );
   //return !! (true);
+  //logger.info(`Title: ${workItem.fields["System.Title"]}`);
+  if (workItem.fields["System.Title"]){
+    return true;
+  }
+  logger.info(`Dropping record with empty Title`);
+  return false;
 }
 
 function map(workItem: IAzureWorkItem): IPoint {
@@ -77,13 +83,13 @@ function map(workItem: IAzureWorkItem): IPoint {
       provider: 'azure',
       project: workItem.fields["System.TeamProject"],
       iterationpath: workItem.fields["System.IterationPath"],
-      title: workItem.fields["System.Title"]
     },
     fields: {
       duration: new Date(workItem.fields["System.ChangedDate"]).getTime() - new Date(workItem.fields["System.CreatedDate"]).getTime(),
       state: workItem.fields["System.State"],
       type: workItem.fields["System.WorkItemType"],
-      areapath : workItem.fields["System.AreaPath"]
+      areapath : workItem.fields["System.AreaPath"],
+      title: workItem.fields["System.Title"] ? workItem.fields["System.Title"] : "dummy"
     }
   }
 }
