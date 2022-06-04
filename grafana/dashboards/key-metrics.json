@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1654366959255,
+  "iteration": 1654373777484,
   "links": [],
   "panels": [
     {
@@ -670,10 +670,7 @@
       },
       "id": 28,
       "options": {
-        "displayLabels": [
-          "value",
-          "name"
-        ],
+        "displayLabels": [],
         "legend": {
           "displayMode": "table",
           "placement": "right",
@@ -711,7 +708,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT  sum(\"duration\") FROM \"workitem\"   where (\"type\" =~ /^$WorkItemType$/)  AND (\"state\" =~ /^$workItemState$/)  AND (\"project\" =~ /^$workitemproject$/)  group by  title;",
+          "query": "SELECT  sum from ( select sum(\"duration\") FROM \"workitem\"   where (\"type\" =~ /^$WorkItemType$/)  AND (\"state\" =~ /^$workItemState$/)  AND (\"project\" =~ /^$workitemproject$/) group by  title ) where title != '' group by title;",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -2412,5 +2409,5 @@
   "timezone": "",
   "title": "Key Metrics",
   "uid": "VD_qTt97k",
-  "version": 2
+  "version": 1
 }
