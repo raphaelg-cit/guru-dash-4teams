@@ -83,13 +83,15 @@ function map(workItem: IAzureWorkItem): IPoint {
       provider: 'azure',
       project: workItem.fields["System.TeamProject"],
       iterationpath: workItem.fields["System.IterationPath"],
+      title: workItem.fields["System.Title"] ? workItem.fields["System.Title"] : "dummy"
     },
     fields: {
-      duration: new Date(workItem.fields["System.ChangedDate"]).getTime() - new Date(workItem.fields["System.CreatedDate"]).getTime(),
+      //duration: new Date(workItem.fields["System.ChangedDate"]).getTime() - new Date(workItem.fields["System.CreatedDate"]).getTime(),
+      duration: new Date().getTime() - new Date(workItem.fields["System.CreatedDate"]).getTime(),
       state: workItem.fields["System.State"],
       type: workItem.fields["System.WorkItemType"],
       areapath : workItem.fields["System.AreaPath"],
-      title: workItem.fields["System.Title"] ? workItem.fields["System.Title"] : "dummy"
+
     }
   }
 }
