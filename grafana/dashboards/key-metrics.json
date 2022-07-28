@@ -8,18 +8,28 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1654373777484,
+  "iteration": 1659042147859,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": "influxdb",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -35,7 +45,8 @@
             "hideFrom": {
               "graph": false,
               "legend": false,
-              "tooltip": false
+              "tooltip": false,
+              "viz": false
             },
             "lineInterpolation": "linear",
             "lineWidth": 1,
@@ -44,7 +55,14 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -78,8 +96,9 @@
           "displayMode": "list",
           "placement": "bottom"
         },
-        "tooltipOptions": {
-          "mode": "single"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "7.5.16",
@@ -123,8 +142,6 @@
           "tags": []
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Daily Deployment Frequency  - successful deployments - By ProjectDeployName / By Environment",
       "transformations": [
         {
@@ -157,13 +174,11 @@
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
       },
       "fill": 0,
       "fillGradient": 0,
@@ -197,7 +212,7 @@
       },
       "paceLength": 10,
       "percentage": false,
-      "pluginVersion": "7.5.16",
+      "pluginVersion": "8.4.6",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -216,9 +231,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Overview - Build time average",
       "tooltip": {
         "shared": true,
@@ -231,13 +244,15 @@
           "options": {
             "valueLabel": "buildName"
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         }
       ],
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -245,29 +260,25 @@
         {
           "$$hashKey": "object:155",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:156",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "influxdb",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -283,7 +294,8 @@
             "hideFrom": {
               "graph": false,
               "legend": false,
-              "tooltip": false
+              "tooltip": false,
+              "viz": false
             },
             "lineInterpolation": "linear",
             "lineStyle": {
@@ -295,7 +307,14 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -329,8 +348,9 @@
           "displayMode": "list",
           "placement": "bottom"
         },
-        "tooltipOptions": {
-          "mode": "single"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "7.5.16",
@@ -416,12 +436,11 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
-      "decimals": 0,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
       },
+      "decimals": 0,
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -453,7 +472,7 @@
       },
       "paceLength": 10,
       "percentage": false,
-      "pluginVersion": "7.5.16",
+      "pluginVersion": "8.4.6",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -472,9 +491,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Overview - Build failure rate",
       "tooltip": {
         "shared": true,
@@ -487,13 +504,15 @@
           "options": {
             "valueLabel": "buildName"
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         }
       ],
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -505,46 +524,38 @@
           "label": "success rate",
           "logBase": 1,
           "max": "1",
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:242",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "influxdb",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
           },
+          "mappings": [],
           "unit": "h"
         },
         "overrides": []
@@ -571,7 +582,11 @@
           "fields": "",
           "values": false
         },
-        "text": {}
+        "text": {},
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
       "pluginVersion": "7.5.16",
       "targets": [
@@ -615,8 +630,6 @@
           "tags": []
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Time to Restore Service (Deploy) - Mean elapsed time between failure and success - By ProjectDeployName / By Environment",
       "transformations": [
         {
@@ -637,27 +650,24 @@
       "type": "piechart"
     },
     {
-      "datasource": "influxdb",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
           },
+          "mappings": [],
           "unit": "ms"
         },
         "overrides": []
@@ -674,6 +684,8 @@
         "legend": {
           "displayMode": "table",
           "placement": "right",
+          "sortBy": "Value",
+          "sortDesc": false,
           "values": [
             "value"
           ]
@@ -686,11 +698,19 @@
           "fields": "",
           "values": false
         },
-        "text": {}
+        "text": {},
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
       "pluginVersion": "7.5.16",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P3C6603E967DC8568"
+          },
           "groupBy": [
             {
               "params": [
@@ -708,7 +728,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT  sum from ( select sum(\"duration\") FROM \"workitem\"   where (\"type\" =~ /^$WorkItemType$/)  AND (\"state\" =~ /^$workItemState$/)  AND (\"project\" =~ /^$workitemproject$/) group by  title ) where title != '' group by title;",
+          "query": "SELECT     \"duration\"  FROM \"workitem\"   where (\"type\" =~ /^$WorkItemType$/)  AND (\"state\" =~ /^$workItemState$/)  AND (\"project\" =~ /^$workitemproject$/) group by  title  ;",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -729,14 +749,12 @@
           "tags": []
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Lead Time for Changes by WorkItemType / by workItemState / by workitemproject",
       "transformations": [
         {
           "id": "renameByRegex",
           "options": {
-            "regex": "workitem.mean {iterationpath:",
+            "regex": "workitem.duration {title:",
             "renamePattern": " "
           }
         },
@@ -759,16 +777,14 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 27,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": true,
-          "tags": [],
           "text": [
             "All"
           ],
@@ -776,1625 +792,130 @@
             "$__all"
           ]
         },
-        "datasource": "influxdb",
+        "datasource": {
+          "type": "influxdb",
+          "uid": "P3C6603E967DC8568"
+        },
         "definition": "select distinct project from (select * from deploy) ;",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": null,
         "multi": true,
         "name": "ProjectDeployName",
-        "options": [
-          {
-            "selected": true,
-            "text": "All",
-            "value": "$__all"
-          },
-          {
-            "selected": false,
-            "text": "Backup-Openshift",
-            "value": "Backup-Openshift"
-          },
-          {
-            "selected": false,
-            "text": "Recycle-Pods",
-            "value": "Recycle-Pods"
-          },
-          {
-            "selected": false,
-            "text": "ag-bkg-istio-system.config",
-            "value": "ag-bkg-istio-system.config"
-          },
-          {
-            "selected": false,
-            "text": "ag-bkg-valemobi-utils",
-            "value": "ag-bkg-valemobi-utils"
-          },
-          {
-            "selected": false,
-            "text": "business-adesao-termosbasicos-api-v2.cd",
-            "value": "business-adesao-termosbasicos-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-adesao-termosbasicos-api-v2.config",
-            "value": "business-adesao-termosbasicos-api-v2.config"
-          },
-          {
-            "selected": false,
-            "text": "business-adesaocadastro-webapp-cd",
-            "value": "business-adesaocadastro-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-admin-gestao-ferramentas-api-cd",
-            "value": "business-admin-gestao-ferramentas-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-alteracao-dadosacesso-api-cd",
-            "value": "business-alteracao-dadosacesso-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-alteracao-dadosadicionais-api-cd",
-            "value": "business-alteracao-dadosadicionais-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-alteracao-dadosendereco-api-cd",
-            "value": "business-alteracao-dadosendereco-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-alteracao-dadosfinanceiros-api-cd",
-            "value": "business-alteracao-dadosfinanceiros-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-alteracao-dadospessoais-api-cd",
-            "value": "business-alteracao-dadospessoais-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-alteracao-representantes-api-cd",
-            "value": "business-alteracao-representantes-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-apic-migracao-api-v2-cd",
-            "value": "business-apic-migracao-api-v2-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-apic-perfil-webapp-cd",
-            "value": "business-apic-perfil-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-apic-produtos-api-v2-cd",
-            "value": "business-apic-produtos-api-v2-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-apic-produtos-api.config",
-            "value": "business-apic-produtos-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-assinaturaeletronica-api-cd",
-            "value": "business-assinaturaeletronica-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-assinaturaeletronica-api-v2.cd",
-            "value": "business-assinaturaeletronica-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-assinaturaeletronica-api-v2.config",
-            "value": "business-assinaturaeletronica-api-v2.config"
-          },
-          {
-            "selected": false,
-            "text": "business-assinaturaeletronica-webapp-v2-cd",
-            "value": "business-assinaturaeletronica-webapp-v2-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-bloqueio-api-v2.cd",
-            "value": "business-bloqueio-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-bloqueio-validacao-api-cd",
-            "value": "business-bloqueio-validacao-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-bloqueio-validacao-api-v2.cd",
-            "value": "business-bloqueio-validacao-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-bureau-faces-api-cd",
-            "value": "business-bureau-faces-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-cadastro-alteracao-api-cd",
-            "value": "business-cadastro-alteracao-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-cadastro-alteracao-webapp-cd",
-            "value": "business-cadastro-alteracao-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-cadastro-super-simples-webapp-cd",
-            "value": "business-cadastro-super-simples-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-cartao-investback-api-cd",
-            "value": "business-cartao-investback-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-cartao-webapp-cd",
-            "value": "business-cartao-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-cliente-ferramentas-api-cd",
-            "value": "business-cliente-ferramentas-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-cliente-termos-api-cd",
-            "value": "business-cliente-termos-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-cliente-termos-api-v2.cd",
-            "value": "business-cliente-termos-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-cliente-termos-api.config",
-            "value": "business-cliente-termos-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-coe-webapp-cd",
-            "value": "business-coe-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-conta-webapp-cd",
-            "value": "business-conta-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-custodiaremunerada-email-api-cd",
-            "value": "business-custodiaremunerada-email-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-custodiaremunerada-webapp-cd",
-            "value": "business-custodiaremunerada-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-deposito-webapp-cd",
-            "value": "business-deposito-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-email-api-cd",
-            "value": "business-email-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-exportacao-pdf-api",
-            "value": "business-exportacao-pdf-api"
-          },
-          {
-            "selected": false,
-            "text": "business-fundos-webapp-cd",
-            "value": "business-fundos-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-helloworld-gitflow-webapp-cd",
-            "value": "business-helloworld-gitflow-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-institucional-webapp-cd",
-            "value": "business-institucional-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-ir-admin-webapp-cd",
-            "value": "business-ir-admin-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-liquidacao-admin-webapp-cd",
-            "value": "business-liquidacao-admin-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-login-api-v2.cd",
-            "value": "business-login-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-login-api.config",
-            "value": "business-login-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-login-webapp-v2-cd",
-            "value": "business-login-webapp-v2-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-marketplace-webapp-cd",
-            "value": "business-marketplace-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-marketplaceadmin-webapp-cd",
-            "value": "business-marketplaceadmin-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-meusinvestimentos-webapp-cd",
-            "value": "business-meusinvestimentos-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-monitorfraudes-api-cd",
-            "value": "business-monitorfraudes-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-monitorfraudes-webapp-cd",
-            "value": "business-monitorfraudes-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-nelogica-job-cd",
-            "value": "business-nelogica-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-notascorretagem-webapp-cd",
-            "value": "business-notascorretagem-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-openbanking-portal-webapp-cd",
-            "value": "business-openbanking-portal-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-openbanking-webapp-cd",
-            "value": "business-openbanking-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-opt-api-cd",
-            "value": "business-opt-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-otp-api-cd",
-            "value": "business-otp-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-plataforma-comunicacao-webapp-cd",
-            "value": "business-plataforma-comunicacao-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-poc-webapp-cd",
-            "value": "business-poc-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-previdencia-webapp-cd",
-            "value": "business-previdencia-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-proventos-webapp-cd",
-            "value": "business-proventos-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-retirada-portal-webapp-cd",
-            "value": "business-retirada-portal-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-acao-api-v2.cd",
-            "value": "business-saldo-acao-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-acao-api-v2.config",
-            "value": "business-saldo-acao-api-v2.config"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-assessor-api.config",
-            "value": "business-saldo-assessor-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-assessor-v2-api.cd",
-            "value": "business-saldo-assessor-v2-api.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-contamargem-api-v2.cd",
-            "value": "business-saldo-contamargem-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-contamargem-api.config",
-            "value": "business-saldo-contamargem-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-disponivel-api-cd",
-            "value": "business-saldo-disponivel-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-disponivel-api-v2.cd",
-            "value": "business-saldo-disponivel-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-disponivel-api.config",
-            "value": "business-saldo-disponivel-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-fundos-api-v2.cd",
-            "value": "business-saldo-fundos-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-fundos-api.config",
-            "value": "business-saldo-fundos-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-futuro-api-v2.cd",
-            "value": "business-saldo-futuro-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-futuro-api.config",
-            "value": "business-saldo-futuro-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-global-api-v2-cd",
-            "value": "business-saldo-global-api-v2-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-global-api.config",
-            "value": "business-saldo-global-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-opcao-api-v2.cd",
-            "value": "business-saldo-opcao-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-opcao-api.config",
-            "value": "business-saldo-opcao-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-rendafixa-api-v2.cd",
-            "value": "business-saldo-rendafixa-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-rendafixa-api.config",
-            "value": "business-saldo-rendafixa-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-tesourodireto-api-v2.cd",
-            "value": "business-saldo-tesourodireto-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-saldo-tesourodireto-api.config",
-            "value": "business-saldo-tesourodireto-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-seguranca-api-cd",
-            "value": "business-seguranca-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-smartbrain-api-cd",
-            "value": "business-smartbrain-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-smartbrain-job-cd",
-            "value": "business-smartbrain-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-smartbrain-sync-api-cd",
-            "value": "business-smartbrain-sync-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-sms-api-cd",
-            "value": "business-sms-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-sox-admin-webapp-cd",
-            "value": "business-sox-admin-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-stvm-api-cd",
-            "value": "business-stvm-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-stvm-webapp-cd",
-            "value": "business-stvm-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-subscricao-webapp-cd",
-            "value": "business-subscricao-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-template-modernizacao-api.cd",
-            "value": "business-template-modernizacao-api.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-template-modernizacao-api.config",
-            "value": "business-template-modernizacao-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-termo-ciencia-api-v2.cd",
-            "value": "business-termo-ciencia-api-v2.cd"
-          },
-          {
-            "selected": false,
-            "text": "business-termo-ciencia-api.config",
-            "value": "business-termo-ciencia-api.config"
-          },
-          {
-            "selected": false,
-            "text": "business-token-admin-api-cd",
-            "value": "business-token-admin-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-token-admin-webapp-cd",
-            "value": "business-token-admin-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-trademap-job-cd",
-            "value": "business-trademap-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-transferencia-recurso-api-cd",
-            "value": "business-transferencia-recurso-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-transferencia-recurso-webapp-cd",
-            "value": "business-transferencia-recurso-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "business-upload-webapp-cd",
-            "value": "business-upload-webapp-cd"
-          },
-          {
-            "selected": false,
-            "text": "grafana-apply.cd",
-            "value": "grafana-apply.cd"
-          },
-          {
-            "selected": false,
-            "text": "salesforce-deploy-cd",
-            "value": "salesforce-deploy-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-abertura-dia-sinacor-import-custody-bmf-adjust-job-cd",
-            "value": "valemobi-abertura-dia-sinacor-import-custody-bmf-adjust-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bacen-daily-anbima-end-day-job-cd",
-            "value": "valemobi-bacen-daily-anbima-end-day-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bacen-download-calendar-igpm-job-cd",
-            "value": "valemobi-bacen-download-calendar-igpm-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bacen-download-calendar-ipca-inpc-job-cd",
-            "value": "valemobi-bacen-download-calendar-ipca-inpc-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bacen-download-igpm-job-cd",
-            "value": "valemobi-bacen-download-igpm-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bacen-download-ipca-inpc-job-cd",
-            "value": "valemobi-bacen-download-ipca-inpc-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bacen-ws-scanner-cd",
-            "value": "valemobi-bacen-ws-scanner-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bacen-ws-series-reader-expecific-cd",
-            "value": "valemobi-bacen-ws-series-reader-expecific-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bvbg-conciliation-bvbg-job-cd",
-            "value": "valemobi-bvbg-conciliation-bvbg-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bvbg-crca-bvbg-job-cd",
-            "value": "valemobi-bvbg-crca-bvbg-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bvbg-ecer-bvbg-job-cd",
-            "value": "valemobi-bvbg-ecer-bvbg-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bvbg-erca-bvbg-job-cd",
-            "value": "valemobi-bvbg-erca-bvbg-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bvbg-icer-bvbg-job-cd",
-            "value": "valemobi-bvbg-icer-bvbg-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bvbg-irca-bvbg-job-cd",
-            "value": "valemobi-bvbg-irca-bvbg-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-bvbg-prca-bvbg-job-cd",
-            "value": "valemobi-bvbg-prca-bvbg-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cadastro-copy-definitive-daemon-cd",
-            "value": "valemobi-cadastro-copy-definitive-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cadastro-customer-import-daemon-cd",
-            "value": "valemobi-cadastro-customer-import-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cadastro-end-process-daemon-cd",
-            "value": "valemobi-cadastro-end-process-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cadastro-integracao-valebroker-cd",
-            "value": "valemobi-cadastro-integracao-valebroker-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cadastro-sync-advisor-daemon-cd",
-            "value": "valemobi-cadastro-sync-advisor-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-carteira-cotizada-missing-portfolio-job-cd",
-            "value": "valemobi-carteira-cotizada-missing-portfolio-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-carteira-cotizada-reproc-valorizada-queue-watcher-cd",
-            "value": "valemobi-carteira-cotizada-reproc-valorizada-queue-watcher-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-carteira-cotizada-run-avg-price-hist-job-cd",
-            "value": "valemobi-carteira-cotizada-run-avg-price-hist-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-carteira-cotizada-run-avg-price-job-cd",
-            "value": "valemobi-carteira-cotizada-run-avg-price-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-carteira-cotizada-run-avg-price-reprocess-job-cd",
-            "value": "valemobi-carteira-cotizada-run-avg-price-reprocess-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-carteira-cotizada-run-reprocess-diff-trades-job-cd",
-            "value": "valemobi-carteira-cotizada-run-reprocess-diff-trades-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-coe-alert-coe-cd",
-            "value": "valemobi-coe-alert-coe-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-coe-import-brokerage-note-job-cd",
-            "value": "valemobi-coe-import-brokerage-note-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-coe-sync-coe-operation-status-cd",
-            "value": "valemobi-coe-sync-coe-operation-status-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-contacorrente-sinacor-liquidation-cd",
-            "value": "valemobi-contacorrente-sinacor-liquidation-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-corretora-boleta-summary-fixed-income-daemon-cd",
-            "value": "valemobi-corretora-boleta-summary-fixed-income-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-corretora-boleta-summary-fund-daemon-cd",
-            "value": "valemobi-corretora-boleta-summary-fund-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-corretora-common-document-generator-cd",
-            "value": "valemobi-corretora-common-document-generator-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-corretora-load-custody-reports-job-cd",
-            "value": "valemobi-corretora-load-custody-reports-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-corretora-sinacor-brokerage-broker-process-by-date-job-cd",
-            "value": "valemobi-corretora-sinacor-brokerage-broker-process-by-date-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-corretora-sinacor-brokerage-process-bov-timestamp-job-cd",
-            "value": "valemobi-corretora-sinacor-brokerage-process-bov-timestamp-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cotizada-missing-portfolio-job-cd",
-            "value": "valemobi-cotizada-missing-portfolio-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cotizada-run-custody-transfer-hist-job-cd",
-            "value": "valemobi-cotizada-run-custody-transfer-hist-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cotizada-run-custody-transfer-job-cd",
-            "value": "valemobi-cotizada-run-custody-transfer-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cotizada-run-force-reobter-trades-sinacor-hist-job-cd",
-            "value": "valemobi-cotizada-run-force-reobter-trades-sinacor-hist-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cotizada-run-noturno-carcotizada-auto-job-cd",
-            "value": "valemobi-cotizada-run-noturno-carcotizada-auto-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cotizada-run-reproc-clientes-especificos-job-cd",
-            "value": "valemobi-cotizada-run-reproc-clientes-especificos-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cotizada-run-reproc-clientes-periodo-job-cd",
-            "value": "valemobi-cotizada-run-reproc-clientes-periodo-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-cotizada-run-reproc-fds-por-cliente-job-cd",
-            "value": "valemobi-cotizada-run-reproc-fds-por-cliente-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-alert-user-cd",
-            "value": "valemobi-crm-alert-user-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-birthday-alert-job-cd",
-            "value": "valemobi-crm-birthday-alert-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-expire-btc-alert-job-cd",
-            "value": "valemobi-crm-expire-btc-alert-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-expire-options-alert-job-cd",
-            "value": "valemobi-crm-expire-options-alert-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-expire-terms-alert-job-cd",
-            "value": "valemobi-crm-expire-terms-alert-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-expired-old-alert-job-cd",
-            "value": "valemobi-crm-expired-old-alert-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-negative-balance-alert-job-cd",
-            "value": "valemobi-crm-negative-balance-alert-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-new-account-alert-job-cd",
-            "value": "valemobi-crm-new-account-alert-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-new-blocked-of-customer-alert-job-cd",
-            "value": "valemobi-crm-new-blocked-of-customer-alert-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-positive-balance-alert-job-cd",
-            "value": "valemobi-crm-positive-balance-alert-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-subscription-rights-alert-job-cd",
-            "value": "valemobi-crm-subscription-rights-alert-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-crm-vencimento-d-zero-alert-job-cd",
-            "value": "valemobi-crm-vencimento-d-zero-alert-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-database-migrate-core-paqueta-job-cd",
-            "value": "valemobi-database-migrate-core-paqueta-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-database-migrate-history-paqueta-job-cd",
-            "value": "valemobi-database-migrate-history-paqueta-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-database-migrate-valemobi-paqueta-job-cd",
-            "value": "valemobi-database-migrate-valemobi-paqueta-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-exportacao-access-market-data-daemon-cd",
-            "value": "valemobi-exportacao-access-market-data-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-exportacao-daily-export-ipo-reserves-cd",
-            "value": "valemobi-exportacao-daily-export-ipo-reserves-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-exportacao-process-apic-daemon-cd",
-            "value": "valemobi-exportacao-process-apic-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-exportacao-process-apic-job-cd",
-            "value": "valemobi-exportacao-process-apic-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-exportacao-process-hist-mov-daemon-cd",
-            "value": "valemobi-exportacao-process-hist-mov-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-exportacao-process-hist-mov-job-cd",
-            "value": "valemobi-exportacao-process-hist-mov-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-exportacao-process-hist-mov-month-job-cd",
-            "value": "valemobi-exportacao-process-hist-mov-month-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-exportacao-process-operation-fund-daemon-cd",
-            "value": "valemobi-exportacao-process-operation-fund-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-expurgo-historical-table-service-job-cd",
-            "value": "valemobi-expurgo-historical-table-service-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-expurgo-purge-alert-email-rule-occurrence-job-cd",
-            "value": "valemobi-expurgo-purge-alert-email-rule-occurrence-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-expurgo-purge-bar-one-minute-service-job-cd",
-            "value": "valemobi-expurgo-purge-bar-one-minute-service-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-expurgo-purge-history-call-dil-service-job-cd",
-            "value": "valemobi-expurgo-purge-history-call-dil-service-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-expurgo-purge-history-call-direct-treasury-job-cd",
-            "value": "valemobi-expurgo-purge-history-call-direct-treasury-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-expurgo-purge-process-customer-job-cd",
-            "value": "valemobi-expurgo-purge-process-customer-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-expurgo-purge-products-access-service-job-cd",
-            "value": "valemobi-expurgo-purge-products-access-service-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-fundos-create-application-investback-daemon-cd",
-            "value": "valemobi-fundos-create-application-investback-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-fundos-import-custody-cd",
-            "value": "valemobi-fundos-import-custody-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-fundos-import-files-investback-job-cd",
-            "value": "valemobi-fundos-import-files-investback-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-fundos-pipe-marketdata-funds-cd",
-            "value": "valemobi-fundos-pipe-marketdata-funds-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-fundos-process-investback-daemon-cd",
-            "value": "valemobi-fundos-process-investback-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-fundos-quota-import-job-cd",
-            "value": "valemobi-fundos-quota-import-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-fundos-quota-import-on-demand-cd",
-            "value": "valemobi-fundos-quota-import-on-demand-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-fundos-rentability-reprocess-job-cd",
-            "value": "valemobi-fundos-rentability-reprocess-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-fundos-rentability-reprocess-on-demand-cd",
-            "value": "valemobi-fundos-rentability-reprocess-on-demand-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-fundos-sync-customer-preferences-investback-job-cd",
-            "value": "valemobi-fundos-sync-customer-preferences-investback-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-fundos-zip-reader-job-cd",
-            "value": "valemobi-fundos-zip-reader-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-importacao-blockage-job-cd",
-            "value": "valemobi-importacao-blockage-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-importacao-download-file-guarantees-daemon-cd",
-            "value": "valemobi-importacao-download-file-guarantees-daemon-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-importacao-import-process-qualified-investor-job-cd",
-            "value": "valemobi-importacao-import-process-qualified-investor-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-infra-monitor-postgres-metrics-cd",
-            "value": "valemobi-infra-monitor-postgres-metrics-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-marketdata-cadastro-papel-job-cd",
-            "value": "valemobi-marketdata-cadastro-papel-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-marketdata-dump-job-cd",
-            "value": "valemobi-marketdata-dump-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-marketdata-start-day-job-cd",
-            "value": "valemobi-marketdata-start-day-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-marketdata-stream-job-cd",
-            "value": "valemobi-marketdata-stream-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-marketdata-telegraf-bmf-cd",
-            "value": "valemobi-marketdata-telegraf-bmf-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-marketdata-telegraf-bov-cd",
-            "value": "valemobi-marketdata-telegraf-bov-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-autenticacao-trusted-auth-kws-cd",
-            "value": "valemobi-ms-autenticacao-trusted-auth-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-backoffice-backoffice-trusted-kws-cd",
-            "value": "valemobi-ms-backoffice-backoffice-trusted-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-coe-trusted-coe-kws-cd",
-            "value": "valemobi-ms-coe-trusted-coe-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-custodia-trusted-custodia-kws-cd",
-            "value": "valemobi-ms-custodia-trusted-custodia-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-externo-public-kws-cd",
-            "value": "valemobi-ms-externo-public-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-fundos-trusted-fundos-kws-cd",
-            "value": "valemobi-ms-fundos-trusted-fundos-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-integracao-trusted-integracao-kws-cd",
-            "value": "valemobi-ms-integracao-trusted-integracao-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-investidor-trusted-investidor-kws-cd",
-            "value": "valemobi-ms-investidor-trusted-investidor-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-ipo-trusted-ipo-kws-cd",
-            "value": "valemobi-ms-ipo-trusted-ipo-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-renda-fixa-trusted-renda-fixa-kws-cd",
-            "value": "valemobi-ms-renda-fixa-trusted-renda-fixa-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-renda-variavel-trusted-renda-variavel-kws-cd",
-            "value": "valemobi-ms-renda-variavel-trusted-renda-variavel-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-tesouro-direto-trusted-tesouro-direto-kws-cd",
-            "value": "valemobi-ms-tesouro-direto-trusted-tesouro-direto-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-ms-trusted-assets-kws-cd",
-            "value": "valemobi-ms-trusted-assets-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-noticias-agencia-estado-news-job-cd",
-            "value": "valemobi-noticias-agencia-estado-news-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-noticias-alert-generator-cd",
-            "value": "valemobi-noticias-alert-generator-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-noticias-estadao-remover-job-cd",
-            "value": "valemobi-noticias-estadao-remover-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-oms-fix-acceptor-nelogica-cd",
-            "value": "valemobi-oms-fix-acceptor-nelogica-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-oms-fix-acceptor-trademap",
-            "value": "valemobi-oms-fix-acceptor-trademap"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-oms-fix-server-trademap-cd",
-            "value": "valemobi-oms-fix-server-trademap-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-oms-fix-server-trademap-dropcopy-cd",
-            "value": "valemobi-oms-fix-server-trademap-dropcopy-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-oms-order-processor-cd",
-            "value": "valemobi-oms-order-processor-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-oms-order-processor-trademap-cd",
-            "value": "valemobi-oms-order-processor-trademap-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-proventos-import-proceeds-period-job-cd",
-            "value": "valemobi-proventos-import-proceeds-period-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-public-offers-expire-offers-reserve-job-cd",
-            "value": "valemobi-public-offers-expire-offers-reserve-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-rendafixa-import-bond-brokerage-note-job-cd",
-            "value": "valemobi-rendafixa-import-bond-brokerage-note-job-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-rendafixa-import-custody-online-cd",
-            "value": "valemobi-rendafixa-import-custody-online-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-rendafixa-import-index-cd",
-            "value": "valemobi-rendafixa-import-index-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-tesourodireto-alert-tesouro-direto-cd",
-            "value": "valemobi-tesourodireto-alert-tesouro-direto-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-utils-alert-maturity-date-cd",
-            "value": "valemobi-utils-alert-maturity-date-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-utils-conf-cd",
-            "value": "valemobi-utils-conf-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-utils-notification-cd",
-            "value": "valemobi-utils-notification-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-utils-notification-guarantees-cd",
-            "value": "valemobi-utils-notification-guarantees-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-webservices-backoffice-cd",
-            "value": "valemobi-webservices-backoffice-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-webservices-homebroker-cd",
-            "value": "valemobi-webservices-homebroker-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-webservices-novo-portal-assessor-cd",
-            "value": "valemobi-webservices-novo-portal-assessor-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-webservices-portal-assessor-cd",
-            "value": "valemobi-webservices-portal-assessor-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-webservices-tradesystem-assessor-cd",
-            "value": "valemobi-webservices-tradesystem-assessor-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-webservices-tradesystem-cd",
-            "value": "valemobi-webservices-tradesystem-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-webservices-trusted-api-cd",
-            "value": "valemobi-webservices-trusted-api-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-webservices-trusted-kws-cd",
-            "value": "valemobi-webservices-trusted-kws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-webservices-trusted-ws-cd",
-            "value": "valemobi-webservices-trusted-ws-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-webservices-valebroker-coldfusion-trusted-cd",
-            "value": "valemobi-webservices-valebroker-coldfusion-trusted-cd"
-          },
-          {
-            "selected": false,
-            "text": "valemobi-webservices-vm2020-cd",
-            "value": "valemobi-webservices-vm2020-cd"
-          }
-        ],
+        "options": [],
         "query": "select distinct project from (select * from deploy) ;",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
           "selected": true,
-          "text": "User Story",
-          "value": "User Story"
+          "text": "Epic",
+          "value": "Epic"
         },
-        "datasource": "influxdb",
+        "datasource": {
+          "type": "influxdb",
+          "uid": "P3C6603E967DC8568"
+        },
         "definition": "select distinct \"type\" from workitem;",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "WorkItemType",
-        "options": [
-          {
-            "selected": false,
-            "text": "Bug",
-            "value": "Bug"
-          },
-          {
-            "selected": false,
-            "text": "Task",
-            "value": "Task"
-          },
-          {
-            "selected": true,
-            "text": "User Story",
-            "value": "User Story"
-          },
-          {
-            "selected": false,
-            "text": "Epic",
-            "value": "Epic"
-          },
-          {
-            "selected": false,
-            "text": "Feature",
-            "value": "Feature"
-          }
-        ],
+        "options": [],
         "query": "select distinct \"type\" from workitem;",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "TH",
           "value": "TH"
         },
-        "datasource": "influxdb",
+        "datasource": {
+          "type": "influxdb",
+          "uid": "P3C6603E967DC8568"
+        },
         "definition": "select distinct releaseEnvironmentName from (select * from deploy) ;",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "environment",
-        "options": [
-          {
-            "selected": false,
-            "text": "TU",
-            "value": "TU"
-          },
-          {
-            "selected": true,
-            "text": "TH",
-            "value": "TH"
-          },
-          {
-            "selected": false,
-            "text": "TI",
-            "value": "TI"
-          },
-          {
-            "selected": false,
-            "text": "FIX",
-            "value": "FIX"
-          },
-          {
-            "selected": false,
-            "text": "PRD",
-            "value": "PRD"
-          },
-          {
-            "selected": false,
-            "text": "DR",
-            "value": "DR"
-          },
-          {
-            "selected": false,
-            "text": "TH2",
-            "value": "TH2"
-          },
-          {
-            "selected": false,
-            "text": "TU-TI-TH-FIX",
-            "value": "TU-TI-TH-FIX"
-          },
-          {
-            "selected": false,
-            "text": "PRE_PROD",
-            "value": "PRE_PROD"
-          },
-          {
-            "selected": false,
-            "text": "TUTI",
-            "value": "TUTI"
-          }
-        ],
+        "options": [],
         "query": "select distinct releaseEnvironmentName from (select * from deploy) ;",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
           "selected": true,
-          "tags": [],
           "text": [
-            "Closed"
+            "Active"
           ],
           "value": [
-            "Closed"
+            "Active"
           ]
         },
-        "datasource": "influxdb",
+        "datasource": {
+          "type": "influxdb",
+          "uid": "P3C6603E967DC8568"
+        },
         "definition": "select distinct \"state\" from workitem;",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": null,
         "multi": true,
         "name": "workItemState",
-        "options": [
-          {
-            "selected": false,
-            "text": "All",
-            "value": "$__all"
-          },
-          {
-            "selected": true,
-            "text": "Closed",
-            "value": "Closed"
-          },
-          {
-            "selected": false,
-            "text": "Active",
-            "value": "Active"
-          },
-          {
-            "selected": false,
-            "text": "New",
-            "value": "New"
-          },
-          {
-            "selected": false,
-            "text": "Removed",
-            "value": "Removed"
-          },
-          {
-            "selected": false,
-            "text": "Resolved",
-            "value": "Resolved"
-          },
-          {
-            "selected": false,
-            "text": "Proposed",
-            "value": "Proposed"
-          }
-        ],
+        "options": [],
         "query": "select distinct \"state\" from workitem;",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Agora.EvolucaoArquitetura",
           "value": "Agora.EvolucaoArquitetura"
         },
-        "datasource": "influxdb",
+        "datasource": {
+          "type": "influxdb",
+          "uid": "P3C6603E967DC8568"
+        },
         "definition": "select distinct project from (select * from workitem) ;",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "workitemproject",
-        "options": [
-          {
-            "selected": false,
-            "text": "Agora.Fundos",
-            "value": "Agora.Fundos"
-          },
-          {
-            "selected": false,
-            "text": "Agora.SnapShot",
-            "value": "Agora.SnapShot"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Cadastro",
-            "value": "Agora.Cadastro"
-          },
-          {
-            "selected": false,
-            "text": "Agora.IPO",
-            "value": "Agora.IPO"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Risco",
-            "value": "Agora.Risco"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Boletador",
-            "value": "Agora.Boletador"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Extranet",
-            "value": "Agora.Extranet"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Treinamentos",
-            "value": "Agora.Treinamentos"
-          },
-          {
-            "selected": false,
-            "text": "Agora.RendaFixa",
-            "value": "Agora.RendaFixa"
-          },
-          {
-            "selected": false,
-            "text": "Agora.JornadaDeAdesao",
-            "value": "Agora.JornadaDeAdesao"
-          },
-          {
-            "selected": false,
-            "text": "Agora.OfertaPublica",
-            "value": "Agora.OfertaPublica"
-          },
-          {
-            "selected": false,
-            "text": "Agora.NovasCarteirasEOperacoes",
-            "value": "Agora.NovasCarteirasEOperacoes"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Brokerage.Dil",
-            "value": "Agora.Brokerage.Dil"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Brokerage",
-            "value": "Agora.Brokerage"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Brokerage.Portal",
-            "value": "Agora.Brokerage.Portal"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Brokerage.Adesao",
-            "value": "Agora.Brokerage.Adesao"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Brokerage.Business",
-            "value": "Agora.Brokerage.Business"
-          },
-          {
-            "selected": false,
-            "text": "Bradesco.Homebroker",
-            "value": "Bradesco.Homebroker"
-          },
-          {
-            "selected": false,
-            "text": "Agora.DevOps",
-            "value": "Agora.DevOps"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Brokerage.ValeMobi",
-            "value": "Agora.Brokerage.ValeMobi"
-          },
-          {
-            "selected": false,
-            "text": "DevOps",
-            "value": "DevOps"
-          },
-          {
-            "selected": false,
-            "text": "Agora.NovoModelo2020.POC",
-            "value": "Agora.NovoModelo2020.POC"
-          },
-          {
-            "selected": false,
-            "text": "Agora.NovoModelo2020",
-            "value": "Agora.NovoModelo2020"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Automacao.Testes",
-            "value": "Agora.Automacao.Testes"
-          },
-          {
-            "selected": true,
-            "text": "Agora.EvolucaoArquitetura",
-            "value": "Agora.EvolucaoArquitetura"
-          },
-          {
-            "selected": false,
-            "text": "Incidentes",
-            "value": "Incidentes"
-          },
-          {
-            "selected": false,
-            "text": "Agora.Novo.Automacao.Testes",
-            "value": "Agora.Novo.Automacao.Testes"
-          }
-        ],
+        "options": [],
         "query": "select distinct project from (select * from workitem) ;",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -2402,12 +923,13 @@
     ]
   },
   "time": {
-    "from": "now-90d",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Key Metrics",
   "uid": "VD_qTt97k",
-  "version": 1
+  "version": 1,
+  "weekStart": ""
 }
