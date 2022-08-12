@@ -21,10 +21,168 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1659042147859,
+  "iteration": 1660247547822,
   "links": [],
   "liveNow": false,
   "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
+      "description": "Frequência de deploys em todos os projetos ",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 30,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.4.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P3C6603E967DC8568"
+          },
+          "query": "SELECT sum(\"success\") as deploys FROM \"deploy\" WHERE (\"project\" =~ /^$ProjectDeployName$/)  and (\"releaseEnvironmentName\" =~ /^$environment$/) AND $timeFilter",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "Deployment Frequency ",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 32,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P3C6603E967DC8568"
+          },
+          "query": "SELECT sum(\"success\") as deploys FROM \"deploy\" WHERE (\"project\" =~ /^$ProjectDeployName$/)  and (\"releaseEnvironmentName\" =~ /^$environment$/) AND $timeFilter  GROUP BY time(1w) ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "Agora Deployment Frequency",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "deploy.deploys",
+            "renamePattern": "Deploys"
+          }
+        }
+      ],
+      "type": "barchart"
+    },
     {
       "datasource": {
         "type": "influxdb",
@@ -86,7 +244,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 8
       },
       "id": 2,
       "options": {
@@ -186,7 +344,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 24,
@@ -338,7 +496,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 17
       },
       "id": 6,
       "options": {
@@ -447,7 +605,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 9
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 26,
@@ -564,7 +722,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 25
       },
       "id": 8,
       "options": {
@@ -676,7 +834,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 17
+        "y": 25
       },
       "id": 28,
       "options": {
@@ -776,7 +934,7 @@
       "type": "piechart"
     }
   ],
-  "refresh": false,
+  "refresh": "",
   "schemaVersion": 35,
   "style": "dark",
   "tags": [],
@@ -814,7 +972,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Epic",
           "value": "Epic"
         },
@@ -840,9 +998,9 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "TH",
-          "value": "TH"
+          "selected": true,
+          "text": "PRD",
+          "value": "PRD"
         },
         "datasource": {
           "type": "influxdb",
@@ -923,7 +1081,7 @@
     ]
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-90d",
     "to": "now"
   },
   "timepicker": {},
