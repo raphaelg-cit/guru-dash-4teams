@@ -8,18 +8,28 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1635515606586,
+  "iteration": 1660766778558,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": "influxdb",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -28,19 +38,22 @@
           },
           "mappings": [
             {
-              "from": "",
-              "id": 1,
-              "text": "OK",
-              "to": "",
-              "type": 1,
-              "value": "0"
+              "options": {
+                "0": {
+                  "text": "OK"
+                }
+              },
+              "type": "value"
             },
             {
-              "from": "1",
-              "id": 2,
-              "text": "NOK",
-              "to": "1000",
-              "type": 2
+              "options": {
+                "from": 1,
+                "result": {
+                  "text": "NOK"
+                },
+                "to": 1000
+              },
+              "type": "range"
             }
           ],
           "thresholds": {
@@ -85,7 +98,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.6",
       "targets": [
         {
           "groupBy": [
@@ -130,7 +143,10 @@
       "type": "stat"
     },
     {
-      "datasource": "influxdb",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -168,6 +184,7 @@
       },
       "id": 26,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -181,7 +198,7 @@
           "titleSize": 14
         }
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.6",
       "targets": [
         {
           "alias": "Test unit coverage (AVG)",
@@ -265,7 +282,10 @@
       "type": "gauge"
     },
     {
-      "datasource": "influxdb",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -274,19 +294,22 @@
           },
           "mappings": [
             {
-              "from": "",
-              "id": 1,
-              "text": "OK",
-              "to": "",
-              "type": 1,
-              "value": "0"
+              "options": {
+                "0": {
+                  "text": "OK"
+                }
+              },
+              "type": "value"
             },
             {
-              "from": "1",
-              "id": 2,
-              "text": "NOK",
-              "to": "1000",
-              "type": 2
+              "options": {
+                "from": 1,
+                "result": {
+                  "text": "NOK"
+                },
+                "to": 1000
+              },
+              "type": "range"
             }
           ],
           "thresholds": {
@@ -331,7 +354,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.6",
       "targets": [
         {
           "groupBy": [
@@ -376,7 +399,10 @@
       "type": "stat"
     },
     {
-      "datasource": "influxdb",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -385,44 +411,54 @@
           },
           "mappings": [
             {
-              "from": "1",
-              "id": 1,
-              "text": "A",
-              "to": "1.99",
-              "type": 2,
-              "value": "1"
+              "options": {
+                "from": 1,
+                "result": {
+                  "text": "A"
+                },
+                "to": 1.99
+              },
+              "type": "range"
             },
             {
-              "from": "2",
-              "id": 2,
-              "text": "B",
-              "to": "2.99",
-              "type": 2,
-              "value": "2"
+              "options": {
+                "from": 2,
+                "result": {
+                  "text": "B"
+                },
+                "to": 2.99
+              },
+              "type": "range"
             },
             {
-              "from": "3",
-              "id": 3,
-              "text": "C",
-              "to": "3.99",
-              "type": 2,
-              "value": "3"
+              "options": {
+                "from": 3,
+                "result": {
+                  "text": "C"
+                },
+                "to": 3.99
+              },
+              "type": "range"
             },
             {
-              "from": "4",
-              "id": 4,
-              "text": "D",
-              "to": "4.99",
-              "type": 2,
-              "value": "4"
+              "options": {
+                "from": 4,
+                "result": {
+                  "text": "D"
+                },
+                "to": 4.99
+              },
+              "type": "range"
             },
             {
-              "from": "4",
-              "id": 5,
-              "text": "E",
-              "to": "100",
-              "type": 2,
-              "value": "5"
+              "options": {
+                "from": 4,
+                "result": {
+                  "text": "E"
+                },
+                "to": 100
+              },
+              "type": "range"
             }
           ],
           "thresholds": {
@@ -479,7 +515,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.6",
       "targets": [
         {
           "groupBy": [
@@ -524,7 +560,10 @@
       "type": "stat"
     },
     {
-      "datasource": "influxdb",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -533,44 +572,54 @@
           },
           "mappings": [
             {
-              "from": "1",
-              "id": 1,
-              "text": "A",
-              "to": "1.99",
-              "type": 2,
-              "value": "1"
+              "options": {
+                "from": 1,
+                "result": {
+                  "text": "A"
+                },
+                "to": 1.99
+              },
+              "type": "range"
             },
             {
-              "from": "2",
-              "id": 2,
-              "text": "B",
-              "to": "2.99",
-              "type": 2,
-              "value": "2"
+              "options": {
+                "from": 2,
+                "result": {
+                  "text": "B"
+                },
+                "to": 2.99
+              },
+              "type": "range"
             },
             {
-              "from": "3",
-              "id": 3,
-              "text": "C",
-              "to": "3.99",
-              "type": 2,
-              "value": "3"
+              "options": {
+                "from": 3,
+                "result": {
+                  "text": "C"
+                },
+                "to": 3.99
+              },
+              "type": "range"
             },
             {
-              "from": "4",
-              "id": 4,
-              "text": "D",
-              "to": "4.99",
-              "type": 2,
-              "value": "4"
+              "options": {
+                "from": 4,
+                "result": {
+                  "text": "D"
+                },
+                "to": 4.99
+              },
+              "type": "range"
             },
             {
-              "from": "5",
-              "id": 5,
-              "text": "E",
-              "to": "100",
-              "type": 2,
-              "value": "5"
+              "options": {
+                "from": 5,
+                "result": {
+                  "text": "E"
+                },
+                "to": 100
+              },
+              "type": "range"
             }
           ],
           "thresholds": {
@@ -627,7 +676,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.6",
       "targets": [
         {
           "groupBy": [
@@ -672,7 +721,10 @@
       "type": "stat"
     },
     {
-      "datasource": "influxdb",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -681,44 +733,54 @@
           },
           "mappings": [
             {
-              "from": "1",
-              "id": 1,
-              "text": "A",
-              "to": "1.99",
-              "type": 2,
-              "value": "1"
+              "options": {
+                "from": 1,
+                "result": {
+                  "text": "A"
+                },
+                "to": 1.99
+              },
+              "type": "range"
             },
             {
-              "from": "2",
-              "id": 2,
-              "text": "B",
-              "to": "2.99",
-              "type": 2,
-              "value": "2"
+              "options": {
+                "from": 2,
+                "result": {
+                  "text": "B"
+                },
+                "to": 2.99
+              },
+              "type": "range"
             },
             {
-              "from": "3",
-              "id": 3,
-              "text": "C",
-              "to": "3.99",
-              "type": 2,
-              "value": "3"
+              "options": {
+                "from": 3,
+                "result": {
+                  "text": "C"
+                },
+                "to": 3.99
+              },
+              "type": "range"
             },
             {
-              "from": "4",
-              "id": 4,
-              "text": "D",
-              "to": "4.99",
-              "type": 2,
-              "value": "4"
+              "options": {
+                "from": 4,
+                "result": {
+                  "text": "D"
+                },
+                "to": 4.99
+              },
+              "type": "range"
             },
             {
-              "from": "5",
-              "id": 5,
-              "text": "E",
-              "to": "5.99",
-              "type": 2,
-              "value": "5"
+              "options": {
+                "from": 5,
+                "result": {
+                  "text": "E"
+                },
+                "to": 5.99
+              },
+              "type": "range"
             }
           ],
           "thresholds": {
@@ -775,7 +837,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.6",
       "targets": [
         {
           "groupBy": [
@@ -824,10 +886,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "influxdb",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -855,7 +916,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.6",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -915,9 +976,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Blocker violations history",
       "tooltip": {
         "shared": true,
@@ -926,9 +985,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -936,29 +993,25 @@
         {
           "$$hashKey": "object:1689",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1690",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "influxdb",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -1129,8 +1182,6 @@
           "tags": []
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Test Pyramid (for all projects)",
       "type": "aceiot-svg-panel"
     },
@@ -1139,10 +1190,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "influxdb",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1170,7 +1220,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.4.6",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1230,9 +1280,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Critical violations history",
       "tooltip": {
         "shared": true,
@@ -1241,9 +1289,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1251,30 +1297,22 @@
         {
           "$$hashKey": "object:1689",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1690",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "collapsed": true,
-      "datasource": null,
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1282,989 +1320,1289 @@
         "y": 12
       },
       "id": 12,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "influxdb",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 0,
-            "y": 13
-          },
-          "hiddenSeries": false,
-          "id": 14,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "$tag_project",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT value FROM \"bugs\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
-              "queryType": "randomWalk",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [
-            {
-              "$$hashKey": "object:1749",
-              "colorMode": "critical",
-              "fill": true,
-              "line": true,
-              "op": "gt",
-              "value": 0,
-              "yaxis": "left"
-            }
-          ],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Bugs",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:1689",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:1690",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "influxdb",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 8,
-            "y": 13
-          },
-          "hiddenSeries": false,
-          "id": 15,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "$tag_project",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT value FROM \"vulnerabilities\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
-              "queryType": "randomWalk",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [
-            {
-              "$$hashKey": "object:1749",
-              "colorMode": "critical",
-              "fill": true,
-              "line": true,
-              "op": "gt",
-              "value": 0,
-              "yaxis": "left"
-            }
-          ],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Vulnerabilities",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:1689",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:1690",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "influxdb",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 16,
-            "y": 13
-          },
-          "hiddenSeries": false,
-          "id": 16,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "$tag_project",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT value FROM \"code_smells\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
-              "queryType": "randomWalk",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Code smells",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:1689",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:1690",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        }
-      ],
+      "panels": [],
       "title": "Bugs, vulnerabilities and code smells",
       "type": "row"
     },
     {
-      "collapsed": true,
-      "datasource": null,
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "left",
+            "axisSoftMin": 0,
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 13
+      },
+      "id": 14,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 1,
+        "groupWidth": 0.5,
+        "legend": {
+          "calcs": [
+            "max",
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "sortBy": "Last",
+          "sortDesc": true
+        },
+        "orientation": "vertical",
+        "showValue": "always",
+        "stacking": "none",
+        "text": {},
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xField": "Time",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 200
+      },
+      "pluginVersion": "8.4.6",
+      "targets": [
+        {
+          "alias": "$tag_project",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT value FROM \"bugs\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "Bugs",
+      "type": "barchart"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 13
+      },
+      "hiddenSeries": false,
+      "id": 15,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_project",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT value FROM \"vulnerabilities\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:1749",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 0,
+          "yaxis": "left"
+        }
+      ],
+      "timeRegions": [],
+      "title": "Vulnerabilities",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1689",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1690",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 13
+      },
+      "hiddenSeries": false,
+      "id": 16,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_project",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT value FROM \"code_smells\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Code smells",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1689",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1690",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 19
       },
       "id": 4,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "influxdb",
-          "fieldConfig": {
-            "defaults": {
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 0,
-            "y": 14
-          },
-          "hiddenSeries": false,
-          "id": 2,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "$tag_project",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT value FROM \"coverage\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
-              "queryType": "randomWalk",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [
-            {
-              "$$hashKey": "object:790",
-              "colorMode": "critical",
-              "fill": true,
-              "line": true,
-              "op": "lt",
-              "value": 80,
-              "yaxis": "left"
-            }
-          ],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Unit tests coverage",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "transformations": [],
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:1226",
-              "format": "percent",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:1227",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "influxdb",
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 6,
-            "y": 14
-          },
-          "hiddenSeries": false,
-          "id": 6,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "$tag_project",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT value FROM \"tests\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
-              "queryType": "randomWalk",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Number of unit tests",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:1310",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:1311",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "influxdb",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 12,
-            "y": 14
-          },
-          "hiddenSeries": false,
-          "id": 8,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "$tag_project",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT value FROM \"lines\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
-              "queryType": "randomWalk",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Project lines",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:212",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:213",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "influxdb",
-          "fieldConfig": {
-            "defaults": {
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 18,
-            "y": 14
-          },
-          "hiddenSeries": false,
-          "id": 10,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.4",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "$tag_project",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT value FROM \"duplicated_lines_density\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
-              "queryType": "randomWalk",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [
-            {
-              "$$hashKey": "object:927",
-              "colorMode": "critical",
-              "fill": true,
-              "line": true,
-              "op": "gt",
-              "value": 3,
-              "yaxis": "left"
-            }
-          ],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Duplicated lines",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:333",
-              "format": "percent",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:334",
-              "format": "percent",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        }
-      ],
+      "panels": [],
       "title": "Line metrics",
       "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 0,
+        "y": 20
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.6",
+      "pointradius": 2,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_project",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P3C6603E967DC8568"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT value FROM \"coverage\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:790",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": 80,
+          "yaxis": "left"
+        }
+      ],
+      "timeRegions": [],
+      "title": "Unit tests coverage",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transformations": [],
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1226",
+          "format": "percent",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1227",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 6,
+        "y": 20
+      },
+      "hiddenSeries": false,
+      "id": 6,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_project",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT value FROM \"tests\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Number of unit tests",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1310",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1311",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 12,
+        "y": 20
+      },
+      "hiddenSeries": false,
+      "id": 8,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_project",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT value FROM \"lines\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Project lines",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:212",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:213",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P3C6603E967DC8568"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 18,
+        "y": 20
+      },
+      "hiddenSeries": false,
+      "id": 10,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_project",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT value FROM \"duplicated_lines_density\" WHERE project =~ /^(${project_name:pipe})$/ GROUP BY \"project\"",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:927",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 3,
+          "yaxis": "left"
+        }
+      ],
+      "timeRegions": [],
+      "title": "Duplicated lines",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:333",
+          "format": "percent",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:334",
+          "format": "percent",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
     }
   ],
   "refresh": false,
-  "schemaVersion": 27,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": true,
-          "tags": [],
-          "text": [],
-          "value": []
+          "text": [
+            "assinaturaeletronica-api",
+            "business-adesao-enviodocumentos-api",
+            "business-adesao-termosbasicos-api",
+            "business-admin-gestao-ferramentas-api",
+            "business-adminagora-webapp",
+            "business-agorascan-api",
+            "business-agorascan-job",
+            "business-agorascan-webapp",
+            "business-agorauniversitarios-api",
+            "business-agorauniversitarios-job",
+            "business-agorauniversitarios-webapp",
+            "business-alerta-vencimentos-api",
+            "business-alteracao-dadosacesso-api",
+            "business-alteracao-dadosadicionais-api",
+            "business-alteracao-dadosendereco-api",
+            "business-alteracao-dadosfinanceiros-api",
+            "business-alteracao-dadospessoais-api",
+            "business-alteracao-representantes-api",
+            "business-apic-intranet-api",
+            "business-apic-migracao-api",
+            "business-apic-perfil-webapp",
+            "business-apic-produtos-api",
+            "business-assinaturaeletronica-api",
+            "business-assinaturaeletronica-webapp-v2",
+            "business-bloqueio-api",
+            "business-bloqueio-validacao-api",
+            "business-bloqueios-api",
+            "business-bradesco-controleacesso-api",
+            "business-bureau-faces-api",
+            "business-cadastro-alteracao-api",
+            "business-cadastro-alteracao-webapp",
+            "business-cadastro-atualizacao-app",
+            "business-cadastro-cliente-api",
+            "business-cadastro-correntista-api",
+            "business-cadastro-dac-api",
+            "business-cadastro-dadosacesso-api",
+            "business-cadastro-dadosadicionais-api",
+            "business-cadastro-dadosendereco-api",
+            "business-cadastro-dadosfinanceiros-api",
+            "business-cadastro-dadospessoais-api",
+            "business-cadastro-super-simples-webapp",
+            "business-cadastro-validacaocliente-api",
+            "business-cadastro-validacoes-api",
+            "business-campanha-api",
+            "business-campanha-job",
+            "business-campanha-webapp",
+            "business-cartao-investback-api",
+            "business-cartao-webapp",
+            "business-cblc",
+            "business-cliente-dadosfinanceiros-api",
+            "business-cliente-ferramentas-api",
+            "business-cliente-termos-api",
+            "business-coe-webapp",
+            "business-conta-webapp",
+            "business-contapro-job",
+            "business-contingencia-trag-job",
+            "business-controle-acesso-api",
+            "business-cotacoes-portal-webapp",
+            "business-custodiaremunerada-email-api",
+            "business-custodiaremunerada-webapp",
+            "business-dadoscliente-api",
+            "business-deposito-webapp",
+            "business-exportacao-pdf-api",
+            "business-exportacao-pdf-webapp",
+            "business-fundos-webapp",
+            "business-invest-admin-webapp",
+            "business-investidor-qualificado-admin-webapp",
+            "business-investidor-qualificado-api",
+            "business-ir-admin-webapp",
+            "business-ir-portal-webapp",
+            "business-liquidacao-admin-webapp",
+            "business-logger-portalagora-api",
+            "business-logger-portalagora-job",
+            "business-login-api",
+            "business-login-webapp-v2",
+            "business-marketplace-webapp",
+            "business-marketplaceadmin-webapp",
+            "business-meusinvestimentos-webapp",
+            "business-minhaconta-webapp",
+            "business-modelo-liquidacao-api",
+            "business-monitorfraudes-api",
+            "business-monitorfraudes-job",
+            "business-monitorfraudes-webapp",
+            "business-movto-invest-fundos-api",
+            "business-movto-invest-futuros-api",
+            "business-movto-invest-rendafixa-api",
+            "business-movto-invest-rendavariavel-api",
+            "business-movto-invest-tesourodireto-api",
+            "business-nelogica-job",
+            "business-notascorretagem-api",
+            "business-notascorretagem-webapp",
+            "business-openbanking-cadastro-api",
+            "business-openbanking-portal-webapp",
+            "business-openbanking-webapp",
+            "business-opt-api",
+            "business-otp-api",
+            "business-plataforma-comunicacao-webapp-api",
+            "business-plataforma-job",
+            "business-pms-atualizador-tp-api",
+            "business-pms-operacoes-api",
+            "business-pms-tesouraria-api",
+            "business-previdencia-admin-api",
+            "business-previdencia-admin-webapp",
+            "business-previdencia-webapp",
+            "business-proventos-api",
+            "business-proventos-webapp",
+            "business-rendafixa-webapp",
+            "business-retirada-api",
+            "business-retirada-portal-webapp",
+            "business-rv-openfinance-api",
+            "business-saldo-acao-api",
+            "business-saldo-assessor-api",
+            "business-saldo-contamargem-api",
+            "business-saldo-disponivel-api",
+            "business-saldo-fundos-api",
+            "business-saldo-futuro-api",
+            "business-saldo-global-api",
+            "business-saldo-limiteoper-api",
+            "business-saldo-opcao-api",
+            "business-saldo-ouro-api",
+            "business-saldo-projetado-api",
+            "business-saldo-rendafixa-api",
+            "business-saldo-tesourodireto-api",
+            "business-seguranca-api",
+            "business-servicos-comuns-rv-api",
+            "business-sinv-api",
+            "business-smartbrain-api",
+            "business-smartbrain-job",
+            "business-smartbrain-sync-api",
+            "business-sms-api",
+            "business-sox-admin-webapp",
+            "business-stvm-api",
+            "business-stvm-webapp",
+            "business-subscricao-api",
+            "business-subscricao-webapp",
+            "business-suitability-api",
+            "business-template-api",
+            "business-token-admin-api",
+            "business-token-admin-webapp",
+            "business-trademap-job",
+            "business-transferencia-recurso-api",
+            "business-transferencia-recurso-webapp",
+            "cadastro-trag-job",
+            "cblc",
+            "dil-auth-svc",
+            "dil-auth-svc-v2.ci",
+            "dil-auth-svc.ci",
+            "dil-bvp-proposals-svc.ci",
+            "dil-card-acquisitions-svc.ci",
+            "dil-card-log-svc.ci",
+            "dil-client-tool-svc.ci",
+            "dil-coe-svc-v2.ci",
+            "dil-electronic-signature-svc",
+            "dil-electronic-signature-svc-v2.ci",
+            "dil-gran-svc.ci",
+            "dil-ipo-eq-order-mgmt-svc.ci",
+            "dil-ipo-product-info-svc.ci",
+            "dil-login-svc.ci",
+            "dil-model-liquidation-svc.ci",
+            "dil-modernization-template-svc",
+            "dil-modernization-template-svc.ci",
+            "dil-movto-invest-fixedincome-svc.ci",
+            "dil-movto-invest-funds-svc.ci",
+            "dil-movto-invest-futures-svc.ci",
+            "dil-movto-invest-treasure-svc.ci",
+            "dil-movto-invest-variableincome-svc.ci",
+            "dil-openbanking-consents-svc.ci",
+            "dil-openbanking-customer-svc.ci",
+            "dil-openfinance-debenturescr-svc.ci",
+            "dil-openfinance-fixedincome-svc.ci",
+            "dil-openfinance-funds-svc.ci",
+            "dil-openfinance-treasure-svc.ci",
+            "dil-openfinance-variableincome-svc.ci",
+            "dil-otp-unipass-svc.ci",
+            "dil-portfolio-management-svc",
+            "dil-pre-login-svc.ci",
+            "dil-reportincome-svc.ci",
+            "dil-resources-transfer.ci",
+            "dil-score-face-svc.ci",
+            "dil-settlement-svc.ci",
+            "dil-sinv-svc.ci",
+            "dil-smartbrain-app-svc-n6.ci",
+            "dil-smartbrain-app-svc.ci",
+            "dil-smartbrain-consolidator-svc.ci",
+            "dil-smartbrain-mgmt-svc.ci",
+            "dil-stvm-svc.ci",
+            "email-api-ci"
+          ],
+          "value": [
+            "assinaturaeletronica-api",
+            "business-adesao-enviodocumentos-api",
+            "business-adesao-termosbasicos-api",
+            "business-admin-gestao-ferramentas-api",
+            "business-adminagora-webapp",
+            "business-agorascan-api",
+            "business-agorascan-job",
+            "business-agorascan-webapp",
+            "business-agorauniversitarios-api",
+            "business-agorauniversitarios-job",
+            "business-agorauniversitarios-webapp",
+            "business-alerta-vencimentos-api",
+            "business-alteracao-dadosacesso-api",
+            "business-alteracao-dadosadicionais-api",
+            "business-alteracao-dadosendereco-api",
+            "business-alteracao-dadosfinanceiros-api",
+            "business-alteracao-dadospessoais-api",
+            "business-alteracao-representantes-api",
+            "business-apic-intranet-api",
+            "business-apic-migracao-api",
+            "business-apic-perfil-webapp",
+            "business-apic-produtos-api",
+            "business-assinaturaeletronica-api",
+            "business-assinaturaeletronica-webapp-v2",
+            "business-bloqueio-api",
+            "business-bloqueio-validacao-api",
+            "business-bloqueios-api",
+            "business-bradesco-controleacesso-api",
+            "business-bureau-faces-api",
+            "business-cadastro-alteracao-api",
+            "business-cadastro-alteracao-webapp",
+            "business-cadastro-atualizacao-app",
+            "business-cadastro-cliente-api",
+            "business-cadastro-correntista-api",
+            "business-cadastro-dac-api",
+            "business-cadastro-dadosacesso-api",
+            "business-cadastro-dadosadicionais-api",
+            "business-cadastro-dadosendereco-api",
+            "business-cadastro-dadosfinanceiros-api",
+            "business-cadastro-dadospessoais-api",
+            "business-cadastro-super-simples-webapp",
+            "business-cadastro-validacaocliente-api",
+            "business-cadastro-validacoes-api",
+            "business-campanha-api",
+            "business-campanha-job",
+            "business-campanha-webapp",
+            "business-cartao-investback-api",
+            "business-cartao-webapp",
+            "business-cblc",
+            "business-cliente-dadosfinanceiros-api",
+            "business-cliente-ferramentas-api",
+            "business-cliente-termos-api",
+            "business-coe-webapp",
+            "business-conta-webapp",
+            "business-contapro-job",
+            "business-contingencia-trag-job",
+            "business-controle-acesso-api",
+            "business-cotacoes-portal-webapp",
+            "business-custodiaremunerada-email-api",
+            "business-custodiaremunerada-webapp",
+            "business-dadoscliente-api",
+            "business-deposito-webapp",
+            "business-exportacao-pdf-api",
+            "business-exportacao-pdf-webapp",
+            "business-fundos-webapp",
+            "business-invest-admin-webapp",
+            "business-investidor-qualificado-admin-webapp",
+            "business-investidor-qualificado-api",
+            "business-ir-admin-webapp",
+            "business-ir-portal-webapp",
+            "business-liquidacao-admin-webapp",
+            "business-logger-portalagora-api",
+            "business-logger-portalagora-job",
+            "business-login-api",
+            "business-login-webapp-v2",
+            "business-marketplace-webapp",
+            "business-marketplaceadmin-webapp",
+            "business-meusinvestimentos-webapp",
+            "business-minhaconta-webapp",
+            "business-modelo-liquidacao-api",
+            "business-monitorfraudes-api",
+            "business-monitorfraudes-job",
+            "business-monitorfraudes-webapp",
+            "business-movto-invest-fundos-api",
+            "business-movto-invest-futuros-api",
+            "business-movto-invest-rendafixa-api",
+            "business-movto-invest-rendavariavel-api",
+            "business-movto-invest-tesourodireto-api",
+            "business-nelogica-job",
+            "business-notascorretagem-api",
+            "business-notascorretagem-webapp",
+            "business-openbanking-cadastro-api",
+            "business-openbanking-portal-webapp",
+            "business-openbanking-webapp",
+            "business-opt-api",
+            "business-otp-api",
+            "business-plataforma-comunicacao-webapp-api",
+            "business-plataforma-job",
+            "business-pms-atualizador-tp-api",
+            "business-pms-operacoes-api",
+            "business-pms-tesouraria-api",
+            "business-previdencia-admin-api",
+            "business-previdencia-admin-webapp",
+            "business-previdencia-webapp",
+            "business-proventos-api",
+            "business-proventos-webapp",
+            "business-rendafixa-webapp",
+            "business-retirada-api",
+            "business-retirada-portal-webapp",
+            "business-rv-openfinance-api",
+            "business-saldo-acao-api",
+            "business-saldo-assessor-api",
+            "business-saldo-contamargem-api",
+            "business-saldo-disponivel-api",
+            "business-saldo-fundos-api",
+            "business-saldo-futuro-api",
+            "business-saldo-global-api",
+            "business-saldo-limiteoper-api",
+            "business-saldo-opcao-api",
+            "business-saldo-ouro-api",
+            "business-saldo-projetado-api",
+            "business-saldo-rendafixa-api",
+            "business-saldo-tesourodireto-api",
+            "business-seguranca-api",
+            "business-servicos-comuns-rv-api",
+            "business-sinv-api",
+            "business-smartbrain-api",
+            "business-smartbrain-job",
+            "business-smartbrain-sync-api",
+            "business-sms-api",
+            "business-sox-admin-webapp",
+            "business-stvm-api",
+            "business-stvm-webapp",
+            "business-subscricao-api",
+            "business-subscricao-webapp",
+            "business-suitability-api",
+            "business-template-api",
+            "business-token-admin-api",
+            "business-token-admin-webapp",
+            "business-trademap-job",
+            "business-transferencia-recurso-api",
+            "business-transferencia-recurso-webapp",
+            "cadastro-trag-job",
+            "cblc",
+            "dil-auth-svc",
+            "dil-auth-svc-v2.ci",
+            "dil-auth-svc.ci",
+            "dil-bvp-proposals-svc.ci",
+            "dil-card-acquisitions-svc.ci",
+            "dil-card-log-svc.ci",
+            "dil-client-tool-svc.ci",
+            "dil-coe-svc-v2.ci",
+            "dil-electronic-signature-svc",
+            "dil-electronic-signature-svc-v2.ci",
+            "dil-gran-svc.ci",
+            "dil-ipo-eq-order-mgmt-svc.ci",
+            "dil-ipo-product-info-svc.ci",
+            "dil-login-svc.ci",
+            "dil-model-liquidation-svc.ci",
+            "dil-modernization-template-svc",
+            "dil-modernization-template-svc.ci",
+            "dil-movto-invest-fixedincome-svc.ci",
+            "dil-movto-invest-funds-svc.ci",
+            "dil-movto-invest-futures-svc.ci",
+            "dil-movto-invest-treasure-svc.ci",
+            "dil-movto-invest-variableincome-svc.ci",
+            "dil-openbanking-consents-svc.ci",
+            "dil-openbanking-customer-svc.ci",
+            "dil-openfinance-debenturescr-svc.ci",
+            "dil-openfinance-fixedincome-svc.ci",
+            "dil-openfinance-funds-svc.ci",
+            "dil-openfinance-treasure-svc.ci",
+            "dil-openfinance-variableincome-svc.ci",
+            "dil-otp-unipass-svc.ci",
+            "dil-portfolio-management-svc",
+            "dil-pre-login-svc.ci",
+            "dil-reportincome-svc.ci",
+            "dil-resources-transfer.ci",
+            "dil-score-face-svc.ci",
+            "dil-settlement-svc.ci",
+            "dil-sinv-svc.ci",
+            "dil-smartbrain-app-svc-n6.ci",
+            "dil-smartbrain-app-svc.ci",
+            "dil-smartbrain-consolidator-svc.ci",
+            "dil-smartbrain-mgmt-svc.ci",
+            "dil-stvm-svc.ci",
+            "email-api-ci"
+          ]
         },
-        "datasource": "influxdb",
+        "datasource": {
+          "type": "influxdb",
+          "uid": "P3C6603E967DC8568"
+        },
         "definition": "Select distinct(project) from coverage",
         "description": "Select project to filter dashboard data",
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Project",
@@ -2277,7 +2615,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -2285,12 +2622,13 @@
     ]
   },
   "time": {
-    "from": "now-1y",
-    "to": "now"
+    "from": "now/y",
+    "to": "now/y"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Sonar Metrics",
   "uid": "27s0s3lGz",
-  "version": 2
+  "version": 1,
+  "weekStart": ""
 }
